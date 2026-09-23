@@ -12,8 +12,8 @@ const lang = document.documentElement.lang === "en" ? "en" : "it";
 
 // Testi dei pulsanti della demo, usati da nn-demo.js
 const UI = {
-  it: { start: "Avvia", pause: "Pausa", again: "Riaddestra" },
-  en: { start: "Start", pause: "Pause", again: "Train again" }
+  it: { start: "Avvia", pause: "Pausa", again: "Riaddestra", done: "Addestramento completato, accuratezza" },
+  en: { start: "Start", pause: "Pause", again: "Train again", done: "Training complete, accuracy" }
 };
 
 (function () {

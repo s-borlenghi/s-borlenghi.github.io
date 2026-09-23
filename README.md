@@ -2,7 +2,7 @@
 
 Personal website and portfolio of **Salvatore Borlenghi**, Software Engineer working on AI / Deep Learning (PyTorch), full stack development and software quality.
 
-**Live:** https://s-borlenghi.github.io/sborlenghi/ (redirects to your language) · [Italiano](https://s-borlenghi.github.io/sborlenghi/it/) · [English](https://s-borlenghi.github.io/sborlenghi/en/)
+**Live:** https://s-borlenghi.github.io/ (redirects to your language) · [Italiano](https://s-borlenghi.github.io/it/) · [English](https://s-borlenghi.github.io/en/)
 
 ## About me
 
@@ -13,7 +13,10 @@ I build deep learning models and bring them into real applications. Five years o
 - **Live neural network demo.** A small MLP (2 → 16 → 16 → 1) trains in real time in the browser and draws its decision boundary on three datasets: circles, XOR and spiral. Forward pass, backpropagation and the Adam optimizer are written from scratch in plain JavaScript, with no ML libraries.
 - **Italian / English.** The root page sends each visitor to `/it/` or `/en/` based on their saved choice or browser language. Both versions are static pages linked with `hreflang`, so search engines index both.
 - **No framework, no build step.** Plain HTML, CSS and JavaScript, served as-is by GitHub Pages.
-- **Responsive, light and dark theme, accessible.** Respects `prefers-color-scheme` and `prefers-reduced-motion`.
+- **Material Design 3.** Colour scheme generated with Google's material-color-utilities from a viridis teal seed, self-hosted Roboto Flex and Material Symbols as inline SVG; the live demo uses matplotlib's viridis colour map.
+- **Accessible.** Skip link, keyboard focus, screen reader labels and status messages, large touch targets, high contrast mode, `prefers-reduced-motion`. Checked with axe-core.
+- **Responsive, light and dark theme.** From 320 px phones to wide desktops.
+- **Privacy friendly.** No cookies, no trackers, no third-party requests: fonts and icons are served from the site itself.
 - **SEO ready.** Meta tags, canonical and `hreflang` links, sitemap, Open Graph cards and schema.org `Person` structured data.
 
 ## Structure
@@ -28,15 +31,15 @@ I build deep learning models and bring them into real applications. Five years o
 │   ├── css/style.css     # Styles and light / dark theme
 │   ├── js/i18n.js        # Language switch and saved preference
 │   ├── js/nn-demo.js     # Neural network demo
-│   └── img/foto.jpg      # Profile photo
+│   ├── fonts/            # Roboto Flex (SIL Open Font License)
+│   └── img/              # Profile photo and favicon
 └── .nojekyll             # Serve files as-is, skipping Jekyll
 ```
 
 ## Contact
 
 - Email: salvo.borlenghi@gmail.com
-- LinkedIn: [salvatoreborlenghi](https://www.linkedin.com/in/salvatoreborlenghi)
-- Kaggle: [salvatoreborlenghi](https://www.kaggle.com/salvatoreborlenghi)
+- LinkedIn: [salvatore-borlenghi](https://www.linkedin.com/in/salvatore-borlenghi)
 
 ## License
 

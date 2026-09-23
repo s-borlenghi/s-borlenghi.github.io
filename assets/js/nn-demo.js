@@ -12,7 +12,12 @@
   const btn = document.getElementById("nn-toggle");
   const stEpoch = document.getElementById("st-epoch"), stLoss = document.getElementById("st-loss"), stAcc = document.getElementById("st-acc");
   const SIZES = [2, 16, 16, 1], MAX_EPOCHS = 3000, STEPS_PER_FRAME = 2, GRID = 50, SPAN = 1.15;
-  const C0 = [47, 98, 168], C1 = [227, 162, 26];
+  // Colori: mappa viridis (la predefinita di matplotlib), da classe 0 (viola) a classe 1 (giallo)
+  const VIRIDIS = [[68, 1, 84], [59, 82, 139], [33, 145, 140], [94, 201, 98], [253, 231, 37]];
+  const viridis = p => {
+    const x = Math.min(Math.max(p, 0), 1) * (VIRIDIS.length - 1), i = Math.min(Math.floor(x), VIRIDIS.length - 2), f = x - i;
+    return VIRIDIS[i].map((v, k) => Math.round(v + (VIRIDIS[i + 1][k] - v) * f));
+  };
   let data = [], net = [], opt = [], t = 0, epoch = 0, hist = [], running = false, done = false, kind = "circles", dpr = 1, started = false;
 
   const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
@@ -99,20 +104,34 @@
     lc.width = Math.round(lc.clientWidth * dpr); lc.height = Math.round(lc.clientHeight * dpr);
   }
 
+  const off = document.createElement("canvas"); off.width = GRID; off.height = GRID;
+  const offCtx = off.getContext("2d");
+  // Colore di sfondo del tema attuale (chiaro o scuro), per fondere i colori della previsione
+  function paperColor() {
+    const v = getComputedStyle(document.documentElement).getPropertyValue("--paper-2").trim();
+    const m = /^#([0-9a-f]{6})$/i.exec(v);
+    return m ? [0, 2, 4].map(i => parseInt(m[1].substr(i, 2), 16)) : [236, 234, 243];
+  }
+
   function draw() {
-    const w = cv.width, h = cv.height, cw = w / GRID, ch = h / GRID;
-    ctx.clearRect(0, 0, w, h);
+    const w = cv.width, h = cv.height;
+    // Previsione della rete su una griglia GRID x GRID: disegnata in piccolo, poi ingrandita con sfumatura
+    const img = offCtx.createImageData(GRID, GRID), bg = paperColor();
     for (let gy = 0; gy < GRID; gy++) for (let gx = 0; gx < GRID; gx++) {
       const x = -SPAN + 2 * SPAN * (gx + .5) / GRID, y = SPAN - 2 * SPAN * (gy + .5) / GRID;
-      const p = forward(x, y, false), c = C0.map((v, i) => Math.round(v + (C1[i] - v) * p));
-      ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${0.12 + 0.55 * Math.abs(p - 0.5)})`;
-      ctx.fillRect(Math.floor(gx * cw), Math.floor(gy * ch), Math.ceil(cw) + 1, Math.ceil(ch) + 1);
+      const p = forward(x, y, false), c = viridis(p), a = 0.4 + 0.5 * Math.abs(p - 0.5), o = (gy * GRID + gx) * 4;
+      for (let k = 0; k < 3; k++) img.data[o + k] = Math.round(bg[k] + (c[k] - bg[k]) * a);
+      img.data[o + 3] = 255;
     }
+    offCtx.putImageData(img, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(off, 0, 0, w, h);
     for (const [x, y, lab] of data) {
       const px = (x + SPAN) / (2 * SPAN) * w, py = (SPAN - y) / (2 * SPAN) * h;
       ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 2 * Math.PI);
-      ctx.fillStyle = lab ? "#E3A21A" : "#2F62A8"; ctx.fill();
-      ctx.lineWidth = 1.2 * dpr; ctx.strokeStyle = "rgba(255,255,255,.9)"; ctx.stroke();
+      ctx.fillStyle = lab ? "#FDE725" : "#440154"; ctx.fill();
+      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(35,22,56,.85)" : "rgba(255,255,255,.95)"; ctx.stroke();
     }
     const lw = lc.width, lh = lc.height;
     lctx.clearRect(0, 0, lw, lh);
@@ -120,12 +139,19 @@
       const max = Math.max(...hist);
       lctx.beginPath();
       hist.forEach((v, i) => { const px = i / (hist.length - 1) * lw, py = lh - 3 * dpr - (v / max) * (lh - 6 * dpr); i ? lctx.lineTo(px, py) : lctx.moveTo(px, py); });
-      lctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--steel").trim() || "#2F62A8";
+      lctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--teal").trim() || "#17736F";
       lctx.lineWidth = 2 * dpr; lctx.stroke();
     }
   }
 
-  function label() { btn.textContent = done ? UI[lang].again : running ? UI[lang].pause : UI[lang].start; }
+  function label() {
+    const lbl = btn.querySelector(".lbl");
+    (lbl || btn).textContent = done ? UI[lang].again : running ? UI[lang].pause : UI[lang].start;
+    btn.dataset.state = done ? "again" : running ? "pause" : "start";
+  }
+  // Annuncio per i lettori di schermo: solo a fine addestramento, non a ogni epoca
+  const status = document.getElementById("nn-status");
+  function announce(acc) { if (status) status.textContent = UI[lang].done + " " + Math.round(acc * 100) + "%"; }
   window.nnRefreshLabel = label;
 
   function frame() {
@@ -135,7 +161,7 @@
     hist.push(r.loss); if (hist.length > 400) hist = hist.filter((_, i) => i % 2 === 0);
     stEpoch.textContent = epoch; stLoss.textContent = r.loss.toFixed(3); stAcc.textContent = Math.round(r.acc * 100) + "%";
     draw();
-    if (epoch >= MAX_EPOCHS || r.loss < 0.015) { running = false; done = true; label(); return; }
+    if (epoch >= MAX_EPOCHS || r.loss < 0.015) { running = false; done = true; label(); announce(r.acc); return; }
     requestAnimationFrame(frame);
   }
 

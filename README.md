@@ -15,7 +15,7 @@ I build deep learning models and bring them into real applications. Five years o
 - **Principles.** Three verified quotes from computing pioneers (Turing 1950, Dijkstra 1970, Fowler 1999), one per area of work.
 - **Italian / English.** The root page sends each visitor to `/it/` or `/en/` based on their saved choice or browser language. Both versions are static pages linked with `hreflang`, so search engines index both.
 - **No framework, no build step.** Plain HTML, CSS and JavaScript, served as-is by GitHub Pages.
-- **Design.** Layout inspired by mui.com (white background, alternating tinted sections); rounded geometry, warm colours with a terracotta accent and serif headings inspired by the Claude app. Light theme by default, dark theme on request. Self-hosted IBM Plex Sans and Source Serif 4, Material icons as inline SVG.
+- **Design.** Layout inspired by mui.com (white background, alternating tinted sections), rounded geometry and serif headings inspired by the Claude app, and an own palette: deep navy with a soft green accent. Light theme by default, dark theme on request. Self-hosted IBM Plex Sans and Source Serif 4, Material icons as inline SVG.
 - **Accessible.** Skip link, keyboard focus, screen reader labels and status messages, large touch targets, high contrast mode, `prefers-reduced-motion`. Checked with axe-core.
 - **Light and dark theme.** The theme switch remembers the visitor's choice.
 - **Responsive.** From 320 px phones to wide desktops.
@@ -56,7 +56,7 @@ I build deep learning models and bring them into real applications. Five years o
 
 - Icons: Material Symbols by Google (Apache License 2.0); LinkedIn and GitHub icons from @mui/icons-material (MIT)
 - Fonts: IBM Plex Sans and Source Serif 4 (SIL Open Font License 1.1)
-- Geometry and serif headings inspired by the Claude app; colours inspired by mui.com
+- Layout inspired by mui.com; geometry and serif headings inspired by the Claude app
 
 ## License
 

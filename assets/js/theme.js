@@ -15,7 +15,7 @@
     const label = t === "dark" ? btn.dataset.labelLight : btn.dataset.labelDark;
     btn.setAttribute("aria-label", label);
     btn.title = label;
-    if (meta) meta.setAttribute("content", t === "dark" ? "#141311" : "#ffffff");
+    if (meta) meta.setAttribute("content", t === "dark" ? "#05192d" : "#ffffff");
   }
 
   btn.addEventListener("click", () => {

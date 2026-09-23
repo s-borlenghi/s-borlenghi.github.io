@@ -12,8 +12,8 @@
   const btn = document.getElementById("nn-toggle");
   const stEpoch = document.getElementById("st-epoch"), stLoss = document.getElementById("st-loss"), stAcc = document.getElementById("st-acc");
   const SIZES = [2, 16, 16, 1], MAX_EPOCHS = 3000, STEPS_PER_FRAME = 2, GRID = 50, SPAN = 1.15;
-  // Colori: dal blu (classe 0) al terracotta (classe 1), passando per un tono carta sul confine
-  const VIRIDIS = [[58, 96, 138], [106, 155, 204], [226, 219, 204], [229, 157, 128], [201, 100, 66]];
+  // Colori: dal blu notte (classe 0) al verde (classe 1), passando per un grigio chiaro sul confine
+  const VIRIDIS = [[5, 25, 45], [31, 76, 130], [214, 222, 232], [140, 220, 180], [52, 190, 120]];
   const viridis = p => {
     const x = Math.min(Math.max(p, 0), 1) * (VIRIDIS.length - 1), i = Math.min(Math.floor(x), VIRIDIS.length - 2), f = x - i;
     return VIRIDIS[i].map((v, k) => Math.round(v + (VIRIDIS[i + 1][k] - v) * f));
@@ -130,8 +130,8 @@
     for (const [x, y, lab] of data) {
       const px = (x + SPAN) / (2 * SPAN) * w, py = (SPAN - y) / (2 * SPAN) * h;
       ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 2 * Math.PI);
-      ctx.fillStyle = lab ? "#D97757" : "#3A608A"; ctx.fill();
-      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(31,30,29,.85)" : "rgba(250,249,245,.95)"; ctx.stroke();
+      ctx.fillStyle = lab ? "#3DD68C" : "#1F4C82"; ctx.fill();
+      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(5,25,45,.85)" : "rgba(255,255,255,.95)"; ctx.stroke();
     }
     const lw = lc.width, lh = lc.height;
     lctx.clearRect(0, 0, lw, lh);

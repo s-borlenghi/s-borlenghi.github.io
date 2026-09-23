@@ -1,28 +1,28 @@
 /* Salvatore Borlenghi, pagina personale.
-   Impaginazione ispirata a mui.com (fondo bianco, sezioni alternate), geometria,
-   colori caldi e titoli serif ispirati all'app Claude.
+   Impaginazione ispirata a mui.com (fondo bianco, sezioni alternate), geometria e titoli
+   serif ispirati all'app Claude. Palette propria: blu notte e verde morbido.
    Tema scuro predefinito, chiaro con il pulsante in alto. */
 
-/* Tema chiaro predefinito: bianco come mui.com, con i colori caldi di Claude */
+/* Tema chiaro predefinito: bianco, testi blu notte, verde morbido */
 :root {
-  --primary: #b4532f; --primary-hover: #9a4527; --primary-border: #9a4527; --on-primary: #ffffff;
-  --primary-text: #a34a29; --primary-a08: rgba(180,83,47,.06); --primary-a16: rgba(180,83,47,.1); --primary-a50: rgba(180,83,47,.45);
-  --warm-text: #a34a29; --warm-a16: rgba(180,83,47,.1);
-  --bg: #ffffff; --paper: #ffffff; --border: #e8e4dc;
-  --side: linear-gradient(180deg, #fbf7f2 0%, #f6efe7 100%);
-  --section-alt: linear-gradient(180deg, #ffffff 0%, #faf6f0 100%);
-  --text: #1a1915; --text-2: #5c5a55; --action-hover: #f5f2ec;
+  --primary: #34c77b; --primary-hover: #2bb36c; --primary-border: #2bb36c; --on-primary: #05192d;
+  --primary-text: #067a3a; --primary-a08: rgba(52,199,123,.08); --primary-a16: rgba(52,199,123,.16); --primary-a50: rgba(6,122,58,.45);
+  --warm-text: #067a3a; --warm-a16: rgba(52,199,123,.14);
+  --bg: #ffffff; --paper: #ffffff; --border: #e1e4ea;
+  --side: linear-gradient(180deg, #f3f4f8 0%, #eef8f2 100%);
+  --section-alt: linear-gradient(180deg, #ffffff 0%, #f3f4f8 100%);
+  --text: #05192d; --text-2: #3d4d5c; --action-hover: #f3f4f8;
   --header-bg: rgba(255,255,255,.88);
-  --card-shadow: 0 1px 2px rgba(26,25,21,.04), 0 2px 8px rgba(26,25,21,.04);
-  --grad: linear-gradient(90deg, #a34a29 0%, #c96442 100%);
-  --sel-bg: #f7e6dd; --sel-text: #8f3f22;
+  --card-shadow: 0 1px 2px rgba(5,25,45,.04), 0 2px 8px rgba(5,25,45,.05);
+  --grad: linear-gradient(90deg, #067a3a 0%, #07a04b 100%);
+  --sel-bg: #e3f6ec; --sel-text: #05502a;
   /* chip colorate */
-  --blue-bg: #eaf1f8; --blue-bd: #c9daec; --blue-tx: #2f5f8a;
-  --green-bg: #eef2e6; --green-bd: #d2dcbf; --green-tx: #4e6136;
-  --amber-bg: #f7eee3; --amber-bd: #e7d3ba; --amber-tx: #7a5224;
-  --red-bg: #faede7; --red-bd: #efcdbe; --red-tx: #9a4527;
+  --blue-bg: #eaf1fb; --blue-bd: #c8daf2; --blue-tx: #1f4c82;
+  --green-bg: #e3f6ec; --green-bd: #bfe8d0; --green-tx: #0b6b36;
+  --amber-bg: #fff6e5; --amber-bd: #f7dca6; --amber-tx: #7a4b00;
+  --red-bg: #fdecee; --red-bd: #f6c9cf; --red-tx: #a3192b;
   /* usati dalla demo */
-  --paper-2: #f6f2ec; --teal: #b4532f;
+  --paper-2: #f3f4f8; --teal: #07a04b;
 
   --radius: 16px; --radius-sm: 10px;
   --font: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
@@ -33,24 +33,24 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
   color-scheme: light;
 }
-/* Tema scuro: livelli ben separati (sfondo profondo, card più chiare con bordo e ombra) */
+/* Tema scuro: blu notte a livelli ben separati, verde morbido */
 :root[data-theme="dark"] {
-  --primary: #d97757; --primary-hover: #e08a6d; --primary-border: #c9694b; --on-primary: #1a1915;
-  --primary-text: #e8906f; --primary-a08: rgba(217,119,87,.10); --primary-a16: rgba(217,119,87,.18); --primary-a50: rgba(217,119,87,.5);
-  --warm-text: #e8906f; --warm-a16: rgba(217,119,87,.16);
-  --bg: #141311; --paper: #2b2a27; --border: #45423d;
-  --side: radial-gradient(ellipse 70% 60% at 85% 0%, rgba(217,119,87,.16), transparent 70%), #1f1e1b;
-  --section-alt: linear-gradient(180deg, #141311 0%, #1c1b18 100%);
-  --text: #f4f2ec; --text-2: #b9b5ab; --action-hover: rgba(244,242,236,.07);
-  --header-bg: rgba(20,19,17,.88);
+  --primary: #3dd68c; --primary-hover: #5fe0a2; --primary-border: #3dd68c; --on-primary: #05192d;
+  --primary-text: #4fdc97; --primary-a08: rgba(61,214,140,.08); --primary-a16: rgba(61,214,140,.16); --primary-a50: rgba(61,214,140,.5);
+  --warm-text: #4fdc97; --warm-a16: rgba(61,214,140,.14);
+  --bg: #05192d; --paper: #0d2b47; --border: #1e4266;
+  --side: radial-gradient(ellipse 70% 60% at 85% 0%, rgba(61,214,140,.10), transparent 70%), #08213a;
+  --section-alt: linear-gradient(180deg, #05192d 0%, #082139 100%);
+  --text: #ffffff; --text-2: #b6c2cf; --action-hover: rgba(255,255,255,.06);
+  --header-bg: rgba(5,25,45,.9);
   --card-shadow: 0 1px 2px rgba(0,0,0,.35), 0 6px 16px rgba(0,0,0,.25);
-  --grad: linear-gradient(90deg, #e8906f 0%, #f0b08f 100%);
-  --sel-bg: rgba(217,119,87,.22); --sel-text: #f5c1ab;
-  --blue-bg: rgba(106,155,204,.14); --blue-bd: rgba(106,155,204,.38); --blue-tx: #a9c6e3;
-  --green-bg: rgba(120,140,93,.18); --green-bd: rgba(120,140,93,.45); --green-tx: #bfcda6;
-  --amber-bg: rgba(212,162,127,.16); --amber-bd: rgba(212,162,127,.42); --amber-tx: #e6c4a8;
-  --red-bg: rgba(217,119,87,.16); --red-bd: rgba(217,119,87,.42); --red-tx: #f0ae95;
-  --paper-2: #1a1917; --teal: #e8906f;
+  --grad: linear-gradient(90deg, #4fdc97 0%, #8ae9b9 100%);
+  --sel-bg: rgba(61,214,140,.16); --sel-text: #a6f0c9;
+  --blue-bg: rgba(79,140,220,.16); --blue-bd: rgba(79,140,220,.4); --blue-tx: #a9c9f2;
+  --green-bg: rgba(61,214,140,.14); --green-bd: rgba(61,214,140,.4); --green-tx: #8ae9b9;
+  --amber-bg: rgba(245,190,90,.14); --amber-bd: rgba(245,190,90,.4); --amber-tx: #f7d59a;
+  --red-bg: rgba(240,110,120,.14); --red-bd: rgba(240,110,120,.4); --red-tx: #f7b3ba;
+  --paper-2: #05192d; --teal: #4fdc97;
   color-scheme: dark;
 }
 
@@ -78,7 +78,7 @@ a { color: var(--primary-text); text-decoration-color: var(--primary-a50); text-
 .ms { width: 1.25rem; height: 1.25rem; fill: currentColor; flex: none; display: inline-block; vertical-align: middle; }
 
 /* Accessibilità */
-.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--primary); color: #fff; padding: .5rem 1rem; border-radius: var(--radius-sm); font-weight: 600; text-decoration: none; transition: top .15s var(--ease); }
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--primary); color: var(--on-primary); padding: .5rem 1rem; border-radius: var(--radius-sm); font-weight: 600; text-decoration: none; transition: top .15s var(--ease); }
 .skip:focus { top: calc(.75rem + env(safe-area-inset-top, 0px)); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 main:focus { outline: none; }
@@ -123,8 +123,8 @@ main:focus { outline: none; }
 .brand { display: inline-flex; align-items: center; gap: .625rem; font-family: var(--font); font-size: 1rem; font-weight: 600; letter-spacing: -.005em; color: var(--text); text-decoration: none; margin-right: 1.5rem; white-space: nowrap; }
 .logo { width: 1.875rem; height: 1.875rem; flex: none; }
 .logo rect { fill: var(--primary); }
-.logo path { fill: none; stroke: #ffffff; stroke-width: 2.2; stroke-linejoin: round; }
-.logo circle { fill: #ffffff; }
+.logo path { fill: none; stroke: #05192d; stroke-width: 2.2; stroke-linejoin: round; }
+.logo circle { fill: #05192d; }
 .menu { display: flex; gap: .125rem; margin-right: auto; }
 
 /* Card */
@@ -239,7 +239,7 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
 .skill:first-child p { font-size: 1rem; max-width: 44rem; }
 .icon-badge { display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-sm); background: var(--primary-a16); border: 1px solid var(--border); color: var(--primary-text); flex: none; }
 .icon-badge .ms { width: 1.25rem; height: 1.25rem; }
-.skill:first-child .icon-badge { background: var(--primary); border-color: var(--primary-border); color: #fff; }
+.skill:first-child .icon-badge { background: var(--primary); border-color: var(--primary-border); color: var(--on-primary); }
 
 .list { list-style: none; margin: 0; padding: 0; }
 .list > li { display: flex; gap: 1rem; padding: 1.25rem 1.5rem; }
@@ -266,7 +266,7 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
 .contact .mail { display: inline-block; font-size: clamp(1.25rem, 3vw, 1.5rem); font-weight: 600; margin-bottom: 1.75rem; word-break: break-word; }
 
 /* Pulsante "torna in cima", come il Fab di MUI */
-.fab { position: fixed; z-index: 20; right: calc(1.5rem + env(safe-area-inset-right, 0px)); bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: var(--primary); color: #fff; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12); transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s, background-color .15s var(--ease); overflow: hidden; isolation: isolate; -webkit-tap-highlight-color: transparent; }
+.fab { position: fixed; z-index: 20; right: calc(1.5rem + env(safe-area-inset-right, 0px)); bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: var(--primary); color: var(--on-primary); box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12); transition: opacity .2s var(--ease), transform .2s var(--ease), visibility .2s, background-color .15s var(--ease); overflow: hidden; isolation: isolate; -webkit-tap-highlight-color: transparent; }
 .fab .ms { width: 1.5rem; height: 1.5rem; }
 .fab.is-hidden { opacity: 0; visibility: hidden; transform: translateY(1rem) scale(.8); pointer-events: none; }
 /* Footer e pagina Privacy */
@@ -283,6 +283,12 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
 @media (max-width: 600px) { .legal-card { padding: 1.5rem; } }
 .footer { padding-top: 2.5rem; padding-bottom: 2.5rem; font-size: .8125rem; color: var(--text-2); }
 
+/* Tema scuro: pulsanti "tonali" (verde trasparente), per evitare l'abbagliamento sul blu notte */
+:root[data-theme="dark"] .btn.contained { background: rgba(61,214,140,.18); border-color: rgba(61,214,140,.5); color: #8ae9b9; }
+:root[data-theme="dark"] .fab { background: #124644; color: #8ae9b9; border: 1px solid rgba(61,214,140,.5); }
+:root[data-theme="dark"] .skill:first-child .icon-badge { background: rgba(61,214,140,.18); border-color: rgba(61,214,140,.5); color: #8ae9b9; }
+:root[data-theme="dark"] .skip { background: #124644; color: #8ae9b9; }
+
 /* Passaggio morbido tra tema chiaro e scuro */
 .theme-anim, .theme-anim *, .theme-anim *::before { transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), fill .3s var(--ease) !important; }
 
@@ -290,6 +296,8 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
 @media (hover: hover) {
   a:hover { text-decoration-color: currentColor; }
   .btn.contained:hover { background: var(--primary-hover); }
+  :root[data-theme="dark"] .btn.contained:hover { background: rgba(61,214,140,.26); border-color: #3dd68c; }
+  :root[data-theme="dark"] .fab:hover { background: #17564f; }
   .btn.outlined:hover { background: var(--action-hover); border-color: var(--primary-a50); }
   .btn.outlined:hover .ms { color: var(--text); }
   .text-btn:hover, .segmented > *:hover { background: var(--action-hover); }

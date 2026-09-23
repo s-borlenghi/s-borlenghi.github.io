@@ -25,7 +25,7 @@
 <meta name="twitter:title" content="Salvatore Borlenghi | Software Engineer, AI e Full Stack">
 <meta name="twitter:description" content="Costruisco modelli di deep learning e li porto dentro applicazioni reali.">
 <meta name="twitter:image" content="https://s-borlenghi.github.io/assets/img/foto.jpg">
-<meta name="theme-color" content="#0a1929">
+<meta name="theme-color" content="#0f1214">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <script type="application/ld+json">
 {
@@ -74,7 +74,8 @@
 }
 </script>
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="../assets/fonts/roboto-flex-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plus-jakarta-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
@@ -83,14 +84,14 @@
 
 <header class="app-bar">
   <div class="wrap">
-    <a class="brand" href="#top">Salvatore Borlenghi</a>
+    <a class="brand" href="#top"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="8"/><path d="M9 22 L16 10 L23 22" /><circle cx="9" cy="22" r="2.6"/><circle cx="16" cy="10" r="2.6"/><circle cx="23" cy="22" r="2.6"/></svg>Salvatore Borlenghi</a>
     <nav class="menu" aria-label="Menu principale">
       <a class="text-btn" href="#chi-sono">Chi sono</a>
       <a class="text-btn" href="#competenze">Competenze</a>
       <a class="text-btn" href="#esperienza">Esperienza</a>
       <a class="text-btn" href="#contatti">Contatti</a>
     </nav>
-    <button type="button" class="icon-btn" id="theme-toggle" data-label-dark="Passa al tema scuro" data-label-light="Passa al tema chiaro" aria-label="Passa al tema chiaro" title="Passa al tema chiaro"><svg class="ms i-light" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M338.5-338.5Q280-397 280-480t58.5-141.5Q397-680 480-680t141.5 58.5Q680-563 680-480t-58.5 141.5Q563-280 480-280t-141.5-58.5ZM200-450H40v-60h160v60Zm720 0H760v-60h160v60ZM450-760v-160h60v160h-60Zm0 720v-160h60v160h-60ZM262-658l-100-97 43-44 96 100-39 41Zm494 496-98-100 41-41 99 98-42 43Zm-99-537 98-99 44 42-99 98-43-41ZM162-205l99-98 42 42-98 99-43-43Z"/></svg><svg class="ms i-dark" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 90 63 153t153 63q52 0 99-18.5t79-51.5q1 12 1.5 19.5t.5 14.5q0 150-105 255T480-120Z"/></svg></button>
+    <button type="button" class="theme-btn" id="theme-toggle" data-label-dark="Passa al tema scuro" data-label-light="Passa al tema chiaro" aria-label="Passa al tema chiaro" title="Passa al tema chiaro"><svg class="ms i-light" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M579-381q41-41 41-99t-41-99q-41-41-99-41t-99 41q-41 41-41 99t41 99q41 41 99 41t99-41Zm-240.5 42.5Q280-397 280-480t58.5-141.5Q397-680 480-680t141.5 58.5Q680-563 680-480t-58.5 141.5Q563-280 480-280t-141.5-58.5ZM200-450H40v-60h160v60Zm720 0H760v-60h160v60ZM450-760v-160h60v160h-60Zm0 720v-160h60v160h-60ZM262-658l-100-97 43-44 96 100-39 41Zm494 496-98-100 41-41 99 98-42 43Zm-99-537 98-99 44 42-99 98-43-41ZM162-205l99-98 42 42-98 99-43-43Zm318-275Z"/></svg><svg class="ms i-dark" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 90 63 153t153 63q52 0 99-18.5t79-51.5q1 12 1.5 19.5t.5 14.5q0 150-105 255T480-120Zm0-60q109 0 190-67.5T771-406q-25 11-53.67 16.5Q688.67-384 660-384q-114.69 0-195.34-80.66Q384-545.31 384-660q0-24 5-51.5t18-62.5q-98 27-162.5 109.5T180-480q0 125 87.5 212.5T480-180Zm-4-297Z"/></svg></button>
     <nav class="segmented small" aria-label="Lingua / Language">
       <a href="./" hreflang="it" lang="it" aria-current="page">IT</a>
       <a href="../en/" hreflang="en" lang="en">EN</a>
@@ -102,7 +103,7 @@
   <section class="hero" id="top">
     <div class="hero-text">
       <img class="avatar" src="../assets/img/foto.jpg" alt="Foto di Salvatore Borlenghi" width="285" height="285">
-      <h1>Salvatore Borlenghi</h1>
+      <h1><span class="grad">Salvatore</span> Borlenghi</h1>
       <p class="role">Software Engineer, AI e deep learning, full stack</p>
       <p class="pitch">Costruisco modelli di deep learning in PyTorch e li porto dentro applicazioni reali, affidabili e testate: dal primo esperimento al prodotto in produzione.</p>
       <div class="actions">
@@ -112,6 +113,7 @@
       </div>
     </div>
 
+    <div class="hero-side">
     <figure class="card demo-card">
       <canvas id="nn-canvas" role="img" aria-label="Una rete neurale che impara a separare due classi di punti" aria-describedby="nn-caption"></canvas>
       <div class="demo-controls">
@@ -134,10 +136,11 @@
       <p id="nn-status" class="sr-only" role="status"></p>
       <figcaption id="nn-caption">Una piccola rete neurale, due strati da 16 neuroni, che si addestra adesso nel tuo browser. Il colore mostra come classifica ogni punto. Scritta da zero in JavaScript: backpropagation e ottimizzatore Adam, senza librerie.</figcaption>
     </figure>
+    </div>
   </section>
 
   <section class="section" id="chi-sono">
-    <h2>Chi sono</h2>
+    <div class="sec-head"><p class="eyebrow">Chi sono</p><h2>Due mondi, <span class="grad">un solo profilo</span></h2></div>
     <div class="card about">
       <p class="lead">Unisco due cose che spesso restano separate: addestrare reti neurali e costruire il software che le mette davvero in produzione.</p>
       <div class="about-text">
@@ -148,7 +151,7 @@
   </section>
 
   <section class="section" id="competenze">
-    <h2>Cosa faccio</h2>
+    <div class="sec-head"><p class="eyebrow">Cosa faccio</p><h2>Dal modello <span class="grad">al prodotto</span></h2><p class="sec-sub">Competenze che si rinforzano a vicenda, lungo tutto il ciclo di vita di un prodotto basato sull'AI.</p></div>
     <div class="skills">
         <article class="card skill">
           <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg></span>
@@ -179,7 +182,7 @@
   </section>
 
   <section class="section" id="esperienza">
-    <h2>Esperienza</h2>
+    <div class="sec-head"><p class="eyebrow">Esperienza</p><h2>Dove ho <span class="grad">lavorato</span></h2></div>
     <ol class="card list jobs">
       <li>
         <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M140-120q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h180v-100q0-24 18-42t42-18h200q24 0 42 18t18 42v100h180q24 0 42 18t18 42v480q0 24-18 42t-42 18H140Zm240-600h200v-100H380v100Z"/></svg></span>
@@ -212,17 +215,17 @@
   </section>
 
   <section class="section" id="tecnologie">
-    <h2>Tecnologie</h2>
+    <div class="sec-head"><p class="eyebrow">Tecnologie</p><h2>Gli strumenti <span class="grad">che uso</span></h2></div>
     <div class="card stack">
-      <div><h3>AI e dati</h3><ul class="chips"><li class="chip">Python</li><li class="chip">PyTorch</li><li class="chip">SQL</li><li class="chip">C++</li></ul></div>
-      <div><h3>Backend</h3><ul class="chips"><li class="chip">FastAPI</li><li class="chip">Django</li><li class="chip">Flask</li><li class="chip">Node.js</li></ul></div>
-      <div><h3>Frontend</h3><ul class="chips"><li class="chip">React</li><li class="chip">Next.js</li><li class="chip">JavaScript</li></ul></div>
-      <div><h3>Qualità e strumenti</h3><ul class="chips"><li class="chip">Playwright</li><li class="chip">Postman</li><li class="chip">Git</li><li class="chip">Jira</li></ul></div>
+      <div><h3>AI e dati</h3><ul class="chips c-blue"><li class="chip">Python</li><li class="chip">PyTorch</li><li class="chip">SQL</li><li class="chip">C++</li></ul></div>
+      <div><h3>Backend</h3><ul class="chips c-green"><li class="chip">FastAPI</li><li class="chip">Django</li><li class="chip">Flask</li><li class="chip">Node.js</li></ul></div>
+      <div><h3>Frontend</h3><ul class="chips c-amber"><li class="chip">React</li><li class="chip">Next.js</li><li class="chip">JavaScript</li></ul></div>
+      <div><h3>Qualità e strumenti</h3><ul class="chips c-red"><li class="chip">Playwright</li><li class="chip">Postman</li><li class="chip">Git</li><li class="chip">Jira</li></ul></div>
     </div>
   </section>
 
   <section class="section" id="formazione">
-    <h2>Formazione</h2>
+    <div class="sec-head"><p class="eyebrow">Formazione</p><h2>Studi e <span class="grad">lingue</span></h2></div>
     <ul class="card list edu">
       <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>Università degli Studi di Firenze</h3><p class="meta">Scienze dei Servizi Giuridici, Giurista d'Impresa. In corso, dal 2026.</p></div></li>
       <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>I.S.I.S. Buonarroti Fossombroni</h3><p class="meta">Diploma in Amministrazione, Finanza e Marketing, 2022.</p></div></li>
@@ -232,6 +235,7 @@
 
   <section class="section" id="contatti">
     <div class="card contact">
+      <p class="eyebrow">Contatti</p>
       <h2>Lavoriamo insieme.</h2>
       <p>Hai un progetto che coinvolge AI, sviluppo full stack o qualità del software? Scrivimi, ne parlo volentieri.</p>
       <a class="mail" href="mailto:salvo.borlenghi@gmail.com">salvo.borlenghi@gmail.com</a>

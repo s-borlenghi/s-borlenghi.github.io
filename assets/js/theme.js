@@ -15,11 +15,15 @@
     const label = t === "dark" ? btn.dataset.labelLight : btn.dataset.labelDark;
     btn.setAttribute("aria-label", label);
     btn.title = label;
-    if (meta) meta.setAttribute("content", t === "dark" ? "#0a1929" : "#1976d2");
+    if (meta) meta.setAttribute("content", t === "dark" ? "#0f1214" : "#ffffff");
   }
 
   btn.addEventListener("click", () => {
     const next = current() === "dark" ? "light" : "dark";
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      root.classList.add("theme-anim");
+      setTimeout(() => root.classList.remove("theme-anim"), 350);
+    }
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
     sync();
@@ -32,7 +36,7 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   document.addEventListener("pointerdown", e => {
-    const el = e.target.closest(".btn, .text-btn, .icon-btn, .segmented > *");
+    const el = e.target.closest(".btn, .text-btn, .icon-btn, .theme-btn, .segmented > *");
     if (!el) return;
     const r = el.getBoundingClientRect(), size = Math.hypot(r.width, r.height) * 2;
     const span = document.createElement("span");

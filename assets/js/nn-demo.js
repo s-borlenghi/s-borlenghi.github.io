@@ -153,6 +153,7 @@
   const status = document.getElementById("nn-status");
   function announce(acc) { if (status) status.textContent = UI[lang].done + " " + Math.round(acc * 100) + "%"; }
   window.nnRefreshLabel = label;
+  window.nnRedraw = () => draw();
 
   function frame() {
     if (!running) return;

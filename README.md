@@ -13,9 +13,10 @@ I build deep learning models and bring them into real applications. Five years o
 - **Live neural network demo.** A small MLP (2 → 16 → 16 → 1) trains in real time in the browser and draws its decision boundary on three datasets: circles, XOR and spiral. Forward pass, backpropagation and the Adam optimizer are written from scratch in plain JavaScript, with no ML libraries.
 - **Italian / English.** The root page sends each visitor to `/it/` or `/en/` based on their saved choice or browser language. Both versions are static pages linked with `hreflang`, so search engines index both.
 - **No framework, no build step.** Plain HTML, CSS and JavaScript, served as-is by GitHub Pages.
-- **Material Design 3.** Colour scheme generated with Google's material-color-utilities from a viridis teal seed, self-hosted Roboto Flex and Material Symbols as inline SVG; the live demo uses matplotlib's viridis colour map.
+- **Material UI look.** Styled after MUI's default theme (elevation, 4 px corners, ripple, ToggleButton, Chip) with a teal primary colour, self-hosted Roboto Flex and Material icons as inline SVG; the live demo uses matplotlib's viridis colour map.
 - **Accessible.** Skip link, keyboard focus, screen reader labels and status messages, large touch targets, high contrast mode, `prefers-reduced-motion`. Checked with axe-core.
-- **Responsive, light and dark theme.** From 320 px phones to wide desktops.
+- **Dark theme by default, light on request.** The theme switch remembers the visitor's choice.
+- **Responsive.** From 320 px phones to wide desktops.
 - **Privacy friendly.** No cookies, no trackers, no third-party requests: fonts and icons are served from the site itself.
 - **SEO ready.** Meta tags, canonical and `hreflang` links, sitemap, Open Graph cards and schema.org `Person` structured data.
 
@@ -29,6 +30,7 @@ I build deep learning models and bring them into real applications. Five years o
 ├── sitemap.xml           # All pages with language alternates
 ├── assets/
 │   ├── css/style.css     # Styles and light / dark theme
+│   ├── js/theme.js       # Dark / light theme switch
 │   ├── js/i18n.js        # Language switch and saved preference
 │   ├── js/nn-demo.js     # Neural network demo
 │   ├── fonts/            # Roboto Flex (SIL Open Font License)

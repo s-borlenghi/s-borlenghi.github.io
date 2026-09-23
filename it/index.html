@@ -27,6 +27,7 @@
 <meta name="twitter:image" content="https://s-borlenghi.github.io/assets/img/foto.jpg">
 <meta name="theme-color" content="#0f1214">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<!-- Structured data schema for SEO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,17 +48,17 @@
     "addressCountry": "IT"
   },
   "knowsAbout": [
-    "Python",
     "PyTorch",
     "Deep Learning",
-    "Machine Learning",
+    "Python",
     "FastAPI",
-    "React",
-    "Node.js",
-    "Next.js",
     "SQL",
+    "React",
     "Playwright",
-    "Test Automation"
+    "Node.js",
+    "Postman",
+    "JavaScript",
+    "GitHub"
   ],
   "knowsLanguage": [
     "it",
@@ -82,6 +83,7 @@
 
 <a class="skip" href="#main">Vai al contenuto</a>
 
+<!-- Main application header -->
 <header class="app-bar">
   <div class="wrap">
     <a class="brand" href="#top"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="8"/><path d="M9 22 L16 10 L23 22" /><circle cx="9" cy="22" r="2.6"/><circle cx="16" cy="10" r="2.6"/><circle cx="23" cy="22" r="2.6"/></svg>Salvatore Borlenghi</a>
@@ -102,6 +104,7 @@
 </header>
 
 <main class="wrap" id="main" tabindex="-1">
+  <!-- Hero section -->
   <section class="hero" id="top">
     <div class="hero-text">
       <img class="avatar" src="../assets/img/foto.jpg" alt="Foto di Salvatore Borlenghi" width="285" height="285">
@@ -115,6 +118,7 @@
       </div>
     </div>
 
+    <!-- Neural network demo widget -->
     <div class="hero-side">
     <figure class="card demo-card">
       <canvas id="nn-canvas" role="img" aria-label="Una rete neurale che impara a separare due classi di punti" aria-describedby="nn-caption"></canvas>
@@ -141,6 +145,7 @@
     </div>
   </section>
 
+  <!-- About section -->
   <section class="section" id="chi-sono">
     <div class="sec-head"><p class="eyebrow">Chi sono</p><h2>Due mondi, <span class="grad">un solo profilo</span></h2></div>
     <div class="card about">
@@ -152,6 +157,7 @@
     </div>
   </section>
 
+  <!-- Skills section -->
   <section class="section" id="competenze">
     <div class="sec-head"><p class="eyebrow">Cosa faccio</p><h2>Dal modello <span class="grad">al prodotto</span></h2><p class="sec-sub">Il deep learning è il centro del mio lavoro. Sviluppo full stack, test e automazione sono ciò che lo porta in produzione.</p></div>
     <div class="skills">
@@ -183,6 +189,7 @@
     </div>
   </section>
 
+  <!-- Work experience section -->
   <section class="section" id="esperienza">
     <div class="sec-head"><p class="eyebrow">Esperienza</p><h2>Dove ho <span class="grad">lavorato</span></h2></div>
     <ol class="card list jobs">
@@ -216,16 +223,18 @@
     </ol>
   </section>
 
+  <!-- Tech stack section -->
   <section class="section" id="tecnologie">
     <div class="sec-head"><p class="eyebrow">Tecnologie</p><h2>Gli strumenti <span class="grad">che uso</span></h2></div>
     <div class="card stack">
-      <div><h3>AI e dati</h3><ul class="chips c-blue"><li class="chip">Python</li><li class="chip">PyTorch</li><li class="chip">SQL</li><li class="chip">C++</li></ul></div>
-      <div><h3>Backend</h3><ul class="chips c-green"><li class="chip">FastAPI</li><li class="chip">Django</li><li class="chip">Flask</li><li class="chip">Node.js</li></ul></div>
+      <div><h3>AI e dati</h3><ul class="chips c-blue"><li class="chip">PyTorch</li><li class="chip">Python</li><li class="chip">SQL</li><li class="chip">C++</li></ul></div>
+      <div><h3>Backend</h3><ul class="chips c-green"><li class="chip">FastAPI</li><li class="chip">Node.js</li><li class="chip">Django</li><li class="chip">Flask</li></ul></div>
       <div><h3>Frontend</h3><ul class="chips c-amber"><li class="chip">React</li><li class="chip">Next.js</li><li class="chip">JavaScript</li></ul></div>
-      <div><h3>Qualità e strumenti</h3><ul class="chips c-red"><li class="chip">Playwright</li><li class="chip">Postman</li><li class="chip">Git</li><li class="chip">Jira</li></ul></div>
+      <div><h3>Qualità e strumenti</h3><ul class="chips c-red"><li class="chip">Playwright</li><li class="chip">Postman</li><li class="chip">Git</li><li class="chip">GitHub</li></ul></div>
     </div>
   </section>
 
+  <!-- Education section -->
   <section class="section" id="formazione">
     <div class="sec-head"><p class="eyebrow">Formazione</p><h2>Studi e <span class="grad">lingue</span></h2></div>
     <ul class="card list edu">
@@ -235,6 +244,7 @@
     </ul>
   </section>
 
+  <!-- Contact section -->
   <section class="section" id="contatti">
     <div class="card contact">
       <p class="eyebrow">Contatti</p>
@@ -250,6 +260,7 @@
   </section>
 </main>
 
+<!-- Page footer -->
 <footer class="wrap footer">
   © 2026 Salvatore Borlenghi
   <a class="fab" id="to-top" href="#top" aria-label="Torna in cima" title="Torna in cima"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg></a>

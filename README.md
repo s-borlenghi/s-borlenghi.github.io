@@ -43,6 +43,12 @@ I build deep learning models and bring them into real applications. Five years o
 - Email: salvo.borlenghi@gmail.com
 - LinkedIn: [salvatore-borlenghi](https://www.linkedin.com/in/salvatore-borlenghi)
 
+## Credits
+
+- Icons: Material Symbols by Google (Apache License 2.0); LinkedIn and GitHub icons from @mui/icons-material (MIT)
+- Fonts: IBM Plex Sans and Plus Jakarta Sans (SIL Open Font License 1.1)
+- Visual style inspired by mui.com
+
 ## License
 
 © 2026 Salvatore Borlenghi. All rights reserved.

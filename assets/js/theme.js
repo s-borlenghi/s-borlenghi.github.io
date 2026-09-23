@@ -36,7 +36,7 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   document.addEventListener("pointerdown", e => {
-    const el = e.target.closest(".btn, .text-btn, .icon-btn, .theme-btn, .segmented > *");
+    const el = e.target.closest(".btn, .text-btn, .icon-btn, .theme-btn, .fab, .segmented > *");
     if (!el) return;
     const r = el.getBoundingClientRect(), size = Math.hypot(r.width, r.height) * 2;
     const span = document.createElement("span");
@@ -46,5 +46,24 @@
     span.style.top = (e.clientY - r.top - size / 2) + "px";
     el.appendChild(span);
     span.addEventListener("animationend", () => span.remove());
+  });
+})();
+
+/* Pulsante "torna in cima": compare dopo aver scorso di circa un'altezza di schermo.
+   Senza JavaScript resta visibile e funziona comunque, perché è un normale link a #top. */
+(function () {
+  const fab = document.getElementById("to-top");
+  if (!fab) return;
+  const update = () => fab.classList.toggle("is-hidden", window.scrollY < window.innerHeight * 0.8);
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  fab.addEventListener("click", e => {
+    e.preventDefault();
+    const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+    // porta il focus in cima, così chi usa la tastiera riparte dall'inizio della pagina
+    const brand = document.querySelector(".brand");
+    if (brand) brand.focus({ preventScroll: true });
+    history.replaceState(null, "", location.pathname + location.search);
   });
 })();

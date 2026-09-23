@@ -32,18 +32,14 @@ I build deep learning models and bring them into real applications. Five years o
 └── .nojekyll             # Serve files as-is, skipping Jekyll
 ```
 
-## Run locally
-
-Serve the folder with any static server:
-
-```bash
-python -m http.server 8000
-```
-
-then visit http://localhost:8000.
-
 ## Contact
 
 - Email: salvo.borlenghi@gmail.com
 - LinkedIn: [salvatoreborlenghi](https://www.linkedin.com/in/salvatoreborlenghi)
 - Kaggle: [salvatoreborlenghi](https://www.kaggle.com/salvatoreborlenghi)
+
+## License
+
+© 2026 Salvatore Borlenghi. All rights reserved.
+
+The code, text and images in this repository may not be copied, modified or reused without my written permission.

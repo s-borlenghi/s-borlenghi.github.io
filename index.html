@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Salvatore Borlenghi | AI e Software Developer</title>
-<meta name="description" content="AI e Software Developer con 5 anni di esperienza: modelli di deep learning in PyTorch portati in produzione, con sviluppo full stack e test automatici.">
+<title>Salvatore Borlenghi – Senior Software Developer, AI e PyTorch</title>
+<meta name="description" content="Senior Software Developer in Toscana: modelli di deep learning in PyTorch portati in produzione, sviluppo full stack con FastAPI e React, test automatici.">
 <link rel="canonical" href="https://s-borlenghi.github.io/">
 <link rel="alternate" hreflang="it" href="https://s-borlenghi.github.io/it/">
 <link rel="alternate" hreflang="en" href="https://s-borlenghi.github.io/en/">
@@ -13,14 +13,19 @@
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://s-borlenghi.github.io/">
 <meta property="og:site_name" content="Salvatore Borlenghi">
-<meta property="og:title" content="Salvatore Borlenghi | AI e Software Developer">
-<meta property="og:description" content="Costruisco modelli di deep learning in PyTorch e li porto in produzione.">
-<meta property="og:image" content="https://s-borlenghi.github.io/assets/img/foto.jpg">
+<meta property="og:title" content="Salvatore Borlenghi – Senior Software Developer, AI e PyTorch">
+<meta property="og:description" content="Costruisco modelli di deep learning in PyTorch e li integro in applicazioni reali.">
+<meta property="og:image" content="https://s-borlenghi.github.io/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Salvatore Borlenghi, Senior Software Developer: AI / Deep Learning (PyTorch), Full Stack e Technical QA">
 <meta property="og:locale" content="it_IT">
 <meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#0f1214">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <script>
   /*
    * Smistamento verso la versione in lingua.
@@ -29,6 +34,7 @@
    */
   (function () {
     var pick = new URLSearchParams(location.search).get("lang");
+    if (pick === "it" || pick === "en") { try { localStorage.setItem("lang", pick); } catch (e) {} }
     if (!pick) { try { pick = localStorage.getItem("lang"); } catch (e) {} }
     if (!pick) {
       var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
@@ -40,10 +46,10 @@
 <style>
   :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
   html, body { height: 100%; margin: 0; }
-  body { background: #0f1214; color: #ffffff; font-family: "Helvetica Neue", Arial, sans-serif; display: grid; place-items: center; text-align: center; }
+  body { background: #ffffff; color: #1a1915; font-family: "Helvetica Neue", Arial, sans-serif; display: grid; place-items: center; text-align: center; }
   h1 { font-size: 1.6rem; margin: 0 0 1.25rem; }
-  a { display: inline-block; margin: 0 .35rem; padding: .6rem 1.2rem; border: 1px solid #1f262e; border-radius: 8px; color: #ffffff; background: #12171b; text-decoration: none; font-weight: 600; }
-  a:hover { border-color: #3399ff; }
+  a { display: inline-block; margin: 0 .35rem; padding: .6rem 1.2rem; border: 1px solid #3e3d39; border-radius: 10px; color: #ffffff; background: #30302e; text-decoration: none; font-weight: 600; }
+  a:hover { border-color: #b4532f; color: #a34a29; }
 </style>
 </head>
 <body>

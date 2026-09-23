@@ -1,5 +1,5 @@
 /*
- * Tema scuro (predefinito) o chiaro.
+ * Tema chiaro (predefinito) o scuro.
  * La scelta del visitatore viene salvata e riapplicata prima del disegno della pagina
  * dallo script in <head>; qui si gestisce solo il pulsante nella barra superiore.
  */
@@ -8,14 +8,14 @@
   if (!btn) return;
   const root = document.documentElement;
   const meta = document.querySelector('meta[name="theme-color"]');
-  const current = () => root.getAttribute("data-theme") === "light" ? "light" : "dark";
+  const current = () => root.getAttribute("data-theme") === "dark" ? "dark" : "light";
 
   function sync() {
     const t = current();
     const label = t === "dark" ? btn.dataset.labelLight : btn.dataset.labelDark;
     btn.setAttribute("aria-label", label);
     btn.title = label;
-    if (meta) meta.setAttribute("content", t === "dark" ? "#0f1214" : "#ffffff");
+    if (meta) meta.setAttribute("content", t === "dark" ? "#141311" : "#ffffff");
   }
 
   btn.addEventListener("click", () => {
@@ -66,4 +66,20 @@
     if (brand) brand.focus({ preventScroll: true });
     history.replaceState(null, "", location.pathname + location.search);
   });
+})();
+
+/* Menu scorrevole su telefono: sfuma i lati quando ci sono altre voci */
+(function () {
+  const menu = document.querySelector(".menu");
+  if (!menu) return;
+  const update = () => {
+    const max = menu.scrollWidth - menu.clientWidth;
+    menu.classList.toggle("more-left", menu.scrollLeft > 4);
+    menu.classList.toggle("more-right", max > 4 && menu.scrollLeft < max - 4);
+  };
+  update();
+  menu.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  // la voce che riceve il focus da tastiera viene portata in vista
+  menu.addEventListener("focusin", e => e.target.scrollIntoView({ block: "nearest", inline: "nearest" }));
 })();

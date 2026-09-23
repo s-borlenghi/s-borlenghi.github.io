@@ -12,13 +12,13 @@
   const btn = document.getElementById("nn-toggle");
   const stEpoch = document.getElementById("st-epoch"), stLoss = document.getElementById("st-loss"), stAcc = document.getElementById("st-acc");
   const SIZES = [2, 16, 16, 1], MAX_EPOCHS = 3000, STEPS_PER_FRAME = 2, GRID = 50, SPAN = 1.15;
-  // Colori: dal blu di MUI (classe 0) all'arancio (classe 1), passando per un azzurro chiaro sul confine
-  const VIRIDIS = [[13, 71, 161], [25, 118, 210], [144, 202, 249], [255, 204, 128], [245, 124, 0]];
+  // Colori: dal blu (classe 0) al terracotta (classe 1), passando per un tono carta sul confine
+  const VIRIDIS = [[58, 96, 138], [106, 155, 204], [226, 219, 204], [229, 157, 128], [201, 100, 66]];
   const viridis = p => {
     const x = Math.min(Math.max(p, 0), 1) * (VIRIDIS.length - 1), i = Math.min(Math.floor(x), VIRIDIS.length - 2), f = x - i;
     return VIRIDIS[i].map((v, k) => Math.round(v + (VIRIDIS[i + 1][k] - v) * f));
   };
-  let data = [], net = [], opt = [], t = 0, epoch = 0, hist = [], running = false, done = false, kind = "circles", dpr = 1, started = false;
+  let data = [], net = [], opt = [], t = 0, epoch = 0, hist = [], running = false, done = false, kind = "circles", dpr = 1, started = false, lastAcc = null;
 
   const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
 
@@ -130,8 +130,8 @@
     for (const [x, y, lab] of data) {
       const px = (x + SPAN) / (2 * SPAN) * w, py = (SPAN - y) / (2 * SPAN) * h;
       ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 2 * Math.PI);
-      ctx.fillStyle = lab ? "#FFA726" : "#0D47A1"; ctx.fill();
-      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(10,25,41,.85)" : "rgba(255,255,255,.95)"; ctx.stroke();
+      ctx.fillStyle = lab ? "#D97757" : "#3A608A"; ctx.fill();
+      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(31,30,29,.85)" : "rgba(250,249,245,.95)"; ctx.stroke();
     }
     const lw = lc.width, lh = lc.height;
     lctx.clearRect(0, 0, lw, lh);
@@ -139,7 +139,7 @@
       const max = Math.max(...hist);
       lctx.beginPath();
       hist.forEach((v, i) => { const px = i / (hist.length - 1) * lw, py = lh - 3 * dpr - (v / max) * (lh - 6 * dpr); i ? lctx.lineTo(px, py) : lctx.moveTo(px, py); });
-      lctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--teal").trim() || "#1976d2";
+      lctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--teal").trim() || "#0072e5";
       lctx.lineWidth = 2 * dpr; lctx.stroke();
     }
   }
@@ -154,12 +154,20 @@
   function announce(acc) { if (status) status.textContent = UI[lang].done + " " + Math.round(acc * 100) + "%"; }
   window.nnRefreshLabel = label;
   window.nnRedraw = () => draw();
+  // Usati dalla vetrina: la scheda API chiede previsioni al modello, i test ne leggono lo stato
+  window.nnApi = {
+    predict: (x, y) => forward(x, y, false),
+    stats: () => ({ epoch, loss: hist.length ? hist[hist.length - 1] : null, acc: lastAcc, dataset: kind, running, done }),
+    ensureTraining: () => { if (!running && !done) start(); },
+    resize: () => { size(); draw(); }
+  };
 
   function frame() {
     if (!running) return;
     let r;
     for (let k = 0; k < STEPS_PER_FRAME; k++) r = step();
     hist.push(r.loss); if (hist.length > 400) hist = hist.filter((_, i) => i % 2 === 0);
+    lastAcc = r.acc;
     stEpoch.textContent = epoch; stLoss.textContent = r.loss.toFixed(3); stAcc.textContent = Math.round(r.acc * 100) + "%";
     draw();
     if (epoch >= MAX_EPOCHS || r.loss < 0.015) { running = false; done = true; label(); announce(r.acc); return; }
@@ -168,10 +176,11 @@
 
   function start() { if (done) { init(); } running = true; started = true; label(); requestAnimationFrame(frame); }
   function stop() { running = false; label(); }
-  function reset() { init(); stEpoch.textContent = "0"; stLoss.textContent = "–"; stAcc.textContent = "–"; draw(); if (!running) label(); }
+  function reset() { lastAcc = null; init(); stEpoch.textContent = "0"; stLoss.textContent = "–"; stAcc.textContent = "–"; draw(); if (!running) label(); }
 
   btn.addEventListener("click", () => running ? stop() : start());
-  document.getElementById("nn-reset").addEventListener("click", reset);
+  const resetBtn = document.getElementById("nn-reset");
+  if (resetBtn) resetBtn.addEventListener("click", reset);
   document.querySelectorAll("[data-ds]").forEach(b => b.addEventListener("click", () => {
     kind = b.dataset.ds;
     document.querySelectorAll("[data-ds]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));

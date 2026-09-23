@@ -17,7 +17,7 @@ const UI = {
 };
 
 (function () {
-  const links = document.querySelectorAll(".lang a[hreflang]");
+  const links = document.querySelectorAll(".app-bar a[hreflang]");
   links.forEach(a => a.addEventListener("click", () => {
     try { localStorage.setItem("lang", a.getAttribute("hreflang")); } catch (e) {}
   }));
@@ -25,9 +25,11 @@ const UI = {
   const fromUrl = new URLSearchParams(location.search).get("lang");
   let saved = null;
   try { saved = localStorage.getItem("lang"); } catch (e) {}
+  // un link con ?lang= esplicito vale come scelta del visitatore
+  if (fromUrl === "it" || fromUrl === "en") { try { localStorage.setItem("lang", fromUrl); } catch (e) {} }
   const wanted = fromUrl || saved;
   if (wanted && wanted !== lang) {
-    const target = document.querySelector('.lang a[hreflang="' + wanted + '"]');
+    const target = document.querySelector('.app-bar a[hreflang="' + wanted + '"]');
     if (target) location.replace(target.href + location.hash);
   }
 })();

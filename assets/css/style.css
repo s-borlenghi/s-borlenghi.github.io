@@ -1,24 +1,24 @@
 /* Salvatore Borlenghi, pagina personale.
    Aspetto ispirato a MUI (Material UI per React): palette, ombre, forme e
-   componenti ricalcano il tema predefinito di MUI, con colore primario teal.
+   componenti ricalcano il tema di MUI e del suo sito, con il blu di MUI.
    Tema scuro predefinito, chiaro con il pulsante in alto. */
 
+/* Tema scuro predefinito, sui colori del sito di MUI */
 :root {
-  --primary: #4db6ac; --primary-light: #80cbc4; --primary-dark: #00897b; --on-primary: rgba(0,0,0,.87);
-  --primary-a08: rgba(77,182,172,.08); --primary-a16: rgba(77,182,172,.16); --primary-a50: rgba(77,182,172,.5);
-  --secondary: #ce93d8; --on-secondary: rgba(0,0,0,.87);
-  --bg: #121212; --paper: #121212;
-  --text: #ffffff; --text-2: rgba(255,255,255,.7); --divider: rgba(255,255,255,.12);
-  --action-hover: rgba(255,255,255,.08); --chip-bg: rgba(255,255,255,.16);
-  /* sovrapposizione di elevazione del tema scuro MUI */
-  --ov-1: linear-gradient(rgba(255,255,255,.05), rgba(255,255,255,.05));
-  --ov-2: linear-gradient(rgba(255,255,255,.07), rgba(255,255,255,.07));
-  --ov-4: linear-gradient(rgba(255,255,255,.09), rgba(255,255,255,.09));
-  --ov-8: linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.12));
-  --appbar-bg: #121212; --appbar-img: var(--ov-4); --appbar-text: #ffffff;
-  --hero-glow: radial-gradient(ellipse 80% 55% at 50% -15%, hsla(174, 100%, 28%, .45), transparent);
+  --primary: #66b2ff; --primary-light: #99ccff; --primary-dark: #0059b2; --on-primary: #0a1929;
+  --primary-a08: rgba(102,178,255,.08); --primary-a16: rgba(102,178,255,.16); --primary-a50: rgba(102,178,255,.5);
+  --secondary: #ffb74d; --on-secondary: #0a1929;
+  --bg: #0a1929; --paper: #001e3c;
+  --text: #ffffff; --text-2: #b2bac2; --divider: rgba(194,224,255,.12);
+  --action-hover: rgba(102,178,255,.08); --chip-bg: #132f4c;
+  --card-border: 1px solid #1e4976;
+  --ov-1: none; --ov-2: none; --ov-4: none; --ov-8: none;
+  --appbar-bg: rgba(10,25,41,.8); --appbar-img: none; --appbar-text: #ffffff; --appbar-border: 1px solid rgba(194,224,255,.12);
+  /* fascia di apertura, separata dal resto della pagina */
+  --hero-band: radial-gradient(ellipse 70% 60% at 70% 0%, rgba(0,127,255,.45), transparent 70%), linear-gradient(180deg, #003a75 0%, #001e3c 100%);
+  --hero-edge: #1e4976;
   /* usati dalla demo */
-  --paper-2: #1e1e1e; --teal: #4db6ac;
+  --paper-2: #0a1929; --teal: #66b2ff;
 
   --sh-1: 0px 2px 1px -1px rgba(0,0,0,.2), 0px 1px 1px 0px rgba(0,0,0,.14), 0px 1px 3px 0px rgba(0,0,0,.12);
   --sh-2: 0px 3px 1px -2px rgba(0,0,0,.2), 0px 2px 2px 0px rgba(0,0,0,.14), 0px 1px 5px 0px rgba(0,0,0,.12);
@@ -32,17 +32,19 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
   color-scheme: dark;
 }
+/* Tema chiaro, con il blu classico di MUI */
 :root[data-theme="light"] {
-  --primary: #00796b; --primary-light: #4db6ac; --primary-dark: #004d40; --on-primary: #ffffff;
-  --primary-a08: rgba(0,121,107,.08); --primary-a16: rgba(0,121,107,.12); --primary-a50: rgba(0,121,107,.5);
-  --secondary: #9c27b0; --on-secondary: #ffffff;
-  --bg: #fafafa; --paper: #ffffff;
+  --primary: #1976d2; --primary-light: #42a5f5; --primary-dark: #1565c0; --on-primary: #ffffff;
+  --primary-a08: rgba(25,118,210,.08); --primary-a16: rgba(25,118,210,.12); --primary-a50: rgba(25,118,210,.5);
+  --secondary: #ed6c02; --on-secondary: #ffffff;
+  --bg: #ffffff; --paper: #ffffff;
   --text: rgba(0,0,0,.87); --text-2: rgba(0,0,0,.6); --divider: rgba(0,0,0,.12);
   --action-hover: rgba(0,0,0,.04); --chip-bg: rgba(0,0,0,.08);
-  --ov-1: none; --ov-2: none; --ov-4: none; --ov-8: none;
-  --appbar-bg: #00796b; --appbar-img: none; --appbar-text: #ffffff;
-  --hero-glow: radial-gradient(ellipse 80% 55% at 50% -15%, hsla(174, 80%, 80%, .7), transparent);
-  --paper-2: #f5f5f5; --teal: #00796b;
+  --card-border: 1px solid #e7ebf0;
+  --appbar-bg: #1976d2; --appbar-img: none; --appbar-text: #ffffff; --appbar-border: 0;
+  --hero-band: radial-gradient(ellipse 70% 60% at 70% 0%, rgba(144,202,249,.55), transparent 70%), linear-gradient(180deg, #e3f2fd 0%, #f3f9ff 100%);
+  --hero-edge: #cfe3f8;
+  --paper-2: #f3f6f9; --teal: #1976d2;
   color-scheme: light;
 }
 
@@ -114,17 +116,17 @@ main:focus { outline: none; }
 :root:not([data-theme="light"]) .app-bar .segmented > [aria-current="page"] { background: var(--primary-a16); color: var(--primary); border-color: var(--primary-a50); }
 
 /* AppBar */
-.app-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background-color: var(--appbar-bg); background-image: var(--appbar-img); color: var(--appbar-text); box-shadow: var(--sh-4); }
+.app-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background-color: var(--appbar-bg); color: var(--appbar-text); border-bottom: var(--appbar-border); box-shadow: var(--sh-4); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .app-bar .wrap { display: flex; align-items: center; gap: .75rem; height: 4rem; }
 .brand { font-size: 1.25rem; line-height: 1.6; font-weight: 500; letter-spacing: .0075em; color: inherit; text-decoration: none; margin-right: auto; white-space: nowrap; }
 .menu { display: flex; gap: .25rem; }
 
 /* Card / Paper */
-.card { background-color: var(--paper); background-image: var(--ov-1); border-radius: var(--radius); box-shadow: var(--sh-1); padding: 1.5rem; }
+.card { background-color: var(--paper); border: var(--card-border); border-radius: var(--radius); box-shadow: var(--sh-1); padding: 1.5rem; }
 
 /* Apertura */
-.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; padding: 4rem 0 2rem; position: relative; }
-.hero::before { content: ""; position: absolute; z-index: -1; top: -4rem; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--hero-glow); pointer-events: none; }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; padding: 4.5rem 0 4.5rem; position: relative; isolation: isolate; }
+.hero::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--hero-band); border-bottom: 1px solid var(--hero-edge); pointer-events: none; }
 .hero-text { padding: 1rem 0; }
 .avatar { width: 7rem; height: 7rem; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; box-shadow: var(--sh-4); }
 h1 { font-size: clamp(2.75rem, 6vw, 4rem); line-height: 1.1; font-weight: 400; letter-spacing: -.01em; margin: 0 0 1rem; }
@@ -132,12 +134,12 @@ h1 { font-size: clamp(2.75rem, 6vw, 4rem); line-height: 1.1; font-weight: 400; l
 .pitch { font-size: 1rem; line-height: 1.6; color: var(--text-2); max-width: 34rem; margin: 0 0 2rem; }
 .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 
-.demo-card { margin: 0; background-image: var(--ov-8); box-shadow: var(--sh-8); padding: 1rem; }
+.demo-card { margin: 0; box-shadow: var(--sh-8); padding: 1rem; }
 #nn-canvas { display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius); background: var(--paper-2); }
 .demo-controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; margin-top: 1rem; }
 .run { display: flex; align-items: center; gap: .25rem; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 1rem 0 .5rem; border: 1px solid var(--divider); border-radius: var(--radius); background: var(--divider); overflow: hidden; }
-.stats > div { background-color: var(--paper); background-image: var(--ov-8); padding: .5rem .875rem; }
+.stats > div { background-color: var(--paper); padding: .5rem .875rem; }
 .stats dt { font-size: .75rem; line-height: 1.66; letter-spacing: .03333em; color: var(--text-2); }
 .stats dd { margin: 0; font-size: 1.5rem; line-height: 1.334; font-weight: 400; font-variant-numeric: tabular-nums; }
 #nn-loss { display: block; width: 100%; height: 40px; }
@@ -145,6 +147,7 @@ h1 { font-size: clamp(2.75rem, 6vw, 4rem); line-height: 1.1; font-weight: 400; l
 
 /* Sezioni */
 .section { padding-top: 4rem; }
+main > .section:first-of-type { padding-top: 3.5rem; }
 .section > h2 { font-size: 2.125rem; line-height: 1.235; font-weight: 400; letter-spacing: .00735em; margin: 0 0 1.5rem; }
 h3 { font-size: 1.25rem; line-height: 1.6; font-weight: 500; letter-spacing: .0075em; margin: 0; }
 
@@ -155,7 +158,7 @@ h3 { font-size: 1.25rem; line-height: 1.6; font-weight: 500; letter-spacing: .00
 
 .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .skill { transition: box-shadow .3s var(--ease), background-image .3s var(--ease); }
-.skill:hover { box-shadow: var(--sh-8); background-image: var(--ov-4); }
+.skill:hover { box-shadow: var(--sh-8); border-color: var(--primary-a50); }
 .skill:first-child { grid-column: span 2; border-top: 3px solid var(--primary); }
 .skill h3 { margin: 1rem 0 .5rem; }
 .skill p { margin: 0; color: var(--text-2); font-size: .875rem; line-height: 1.43; letter-spacing: .01071em; }
@@ -180,8 +183,9 @@ h3 { font-size: 1.25rem; line-height: 1.6; font-weight: 500; letter-spacing: .00
 .stack h3 { font-size: .875rem; font-weight: 500; letter-spacing: .00714em; color: var(--primary); margin-bottom: .75rem; }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
 .chip { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 16px; background: var(--chip-bg); font-size: .8125rem; color: var(--text); }
+:root:not([data-theme="light"]) .chip { color: #99ccff; }
 
-.contact { padding: 3rem 2.5rem; border-top: 3px solid var(--primary); background-image: var(--ov-2); }
+.contact { padding: 3rem 2.5rem; border-top: 3px solid var(--primary); background: var(--hero-band); }
 .contact h2 { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.167; font-weight: 400; margin: 0 0 .75rem; }
 .contact p { margin: 0 0 1.25rem; max-width: 36rem; color: var(--text-2); }
 .contact .mail { display: inline-block; font-size: clamp(1.25rem, 3vw, 1.5rem); margin-bottom: 1.75rem; word-break: break-word; }
@@ -193,7 +197,7 @@ h3 { font-size: 1.25rem; line-height: 1.6; font-weight: 500; letter-spacing: .00
   .stack { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; }
+  .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 3rem; }
   .demo-card { max-width: 34rem; }
   .about { grid-template-columns: 1fr; gap: 1rem; }
   html { scroll-padding-top: calc(7rem + env(safe-area-inset-top, 0px)); }

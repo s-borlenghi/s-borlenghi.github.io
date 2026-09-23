@@ -12,8 +12,8 @@
   const btn = document.getElementById("nn-toggle");
   const stEpoch = document.getElementById("st-epoch"), stLoss = document.getElementById("st-loss"), stAcc = document.getElementById("st-acc");
   const SIZES = [2, 16, 16, 1], MAX_EPOCHS = 3000, STEPS_PER_FRAME = 2, GRID = 50, SPAN = 1.15;
-  // Colori: mappa viridis (la predefinita di matplotlib), da classe 0 (viola) a classe 1 (giallo)
-  const VIRIDIS = [[68, 1, 84], [59, 82, 139], [33, 145, 140], [94, 201, 98], [253, 231, 37]];
+  // Colori: dal blu di MUI (classe 0) all'arancio (classe 1), passando per un azzurro chiaro sul confine
+  const VIRIDIS = [[13, 71, 161], [25, 118, 210], [144, 202, 249], [255, 204, 128], [245, 124, 0]];
   const viridis = p => {
     const x = Math.min(Math.max(p, 0), 1) * (VIRIDIS.length - 1), i = Math.min(Math.floor(x), VIRIDIS.length - 2), f = x - i;
     return VIRIDIS[i].map((v, k) => Math.round(v + (VIRIDIS[i + 1][k] - v) * f));
@@ -119,7 +119,7 @@
     const img = offCtx.createImageData(GRID, GRID), bg = paperColor();
     for (let gy = 0; gy < GRID; gy++) for (let gx = 0; gx < GRID; gx++) {
       const x = -SPAN + 2 * SPAN * (gx + .5) / GRID, y = SPAN - 2 * SPAN * (gy + .5) / GRID;
-      const p = forward(x, y, false), c = viridis(p), a = 0.4 + 0.5 * Math.abs(p - 0.5), o = (gy * GRID + gx) * 4;
+      const p = forward(x, y, false), c = viridis(p), a = 0.62 + 0.38 * Math.abs(p - 0.5), o = (gy * GRID + gx) * 4;
       for (let k = 0; k < 3; k++) img.data[o + k] = Math.round(bg[k] + (c[k] - bg[k]) * a);
       img.data[o + 3] = 255;
     }
@@ -130,8 +130,8 @@
     for (const [x, y, lab] of data) {
       const px = (x + SPAN) / (2 * SPAN) * w, py = (SPAN - y) / (2 * SPAN) * h;
       ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, 2 * Math.PI);
-      ctx.fillStyle = lab ? "#FDE725" : "#440154"; ctx.fill();
-      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(35,22,56,.85)" : "rgba(255,255,255,.95)"; ctx.stroke();
+      ctx.fillStyle = lab ? "#FFA726" : "#0D47A1"; ctx.fill();
+      ctx.lineWidth = 1.3 * dpr; ctx.strokeStyle = lab ? "rgba(10,25,41,.85)" : "rgba(255,255,255,.95)"; ctx.stroke();
     }
     const lw = lc.width, lh = lc.height;
     lctx.clearRect(0, 0, lw, lh);
@@ -139,7 +139,7 @@
       const max = Math.max(...hist);
       lctx.beginPath();
       hist.forEach((v, i) => { const px = i / (hist.length - 1) * lw, py = lh - 3 * dpr - (v / max) * (lh - 6 * dpr); i ? lctx.lineTo(px, py) : lctx.moveTo(px, py); });
-      lctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--teal").trim() || "#17736F";
+      lctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--teal").trim() || "#1976d2";
       lctx.lineWidth = 2 * dpr; lctx.stroke();
     }
   }

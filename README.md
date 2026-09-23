@@ -1,6 +1,6 @@
 # Salvatore Borlenghi · Personal website
 
-Personal website and portfolio of **Salvatore Borlenghi**, Software Engineer working on AI / Deep Learning (PyTorch), full stack development and software quality.
+Personal website and portfolio of **Salvatore Borlenghi**, AI and Software Developer: deep learning models in PyTorch taken to production, with full stack development and automated testing.
 
 **Live:** https://s-borlenghi.github.io/ (redirects to your language) · [Italiano](https://s-borlenghi.github.io/it/) · [English](https://s-borlenghi.github.io/en/)
 
@@ -10,7 +10,7 @@ I build deep learning models and bring them into real applications. Five years o
 
 ## Highlights of the site
 
-- **Live neural network demo.** A small MLP (2 → 16 → 16 → 1) trains in real time in the browser and draws its decision boundary on three datasets: circles, XOR and spiral. Forward pass, backpropagation and the Adam optimizer are written from scratch in plain JavaScript, with no ML libraries.
+- **Live neural network demo.** A small MLP (2 → 16 → 16 → 1) trains in real time in the browser and draws its decision boundary on three datasets: circles, XOR and spiral. Forward pass, backpropagation and the Adam optimizer are implemented in plain JavaScript, with no ML libraries.
 - **Italian / English.** The root page sends each visitor to `/it/` or `/en/` based on their saved choice or browser language. Both versions are static pages linked with `hreflang`, so search engines index both.
 - **No framework, no build step.** Plain HTML, CSS and JavaScript, served as-is by GitHub Pages.
 - **mui.com look.** Clean white light theme, near-black dark theme, MUI blue #0072E5, section labels with gradient headlines, bordered cards, ToggleButton and colour-coded chips. Self-hosted IBM Plex Sans and Plus Jakarta Sans, Material icons as inline SVG.

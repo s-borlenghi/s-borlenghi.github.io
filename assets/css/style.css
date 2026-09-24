@@ -251,6 +251,12 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
 .where { font-size: .875rem; color: var(--text-2); }
 .jobs ul { margin: .75rem 0 0; padding-left: 1.125rem; font-size: .9375rem; color: var(--text-2); }
 .jobs ul li { margin-bottom: .25rem; }
+.jobs .job-stack-label { margin: 1rem 0 .5rem; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); }
+.jobs ul.job-stack { margin: 0; padding: 0; font-size: inherit; }
+.jobs ul.job-stack li { margin: 0; }
+.chip.c-green { border-color: var(--green-bd); background: var(--green-bg); color: var(--green-tx); }
+.chip.c-amber { border-color: var(--amber-bd); background: var(--amber-bg); color: var(--amber-tx); }
+.chip.c-red { border-color: var(--red-bd); background: var(--red-bg); color: var(--red-tx); }
 
 .stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding: 1.5rem; }
 .stack h3 { font-size: .875rem; font-weight: 700; color: var(--text); margin-bottom: .75rem; }

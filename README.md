@@ -1,12 +1,14 @@
 # Salvatore Borlenghi · Personal website
 
-Personal website and portfolio of **Salvatore Borlenghi**, Senior Software Developer: AI / Deep Learning (PyTorch), Full Stack and Technical QA.
+Personal website and portfolio of **Salvatore Borlenghi**, Senior Software Developer: AI / Deep Learning, Full Stack and Technical QA.
 
 **Live:** https://s-borlenghi.github.io/ (redirects to your language) · [Italiano](https://s-borlenghi.github.io/it/) · [English](https://s-borlenghi.github.io/en/)
 
 ## About me
 
-I build deep learning models and bring them into real applications. Five years of experience at Giunti Psychometrics, working across the whole lifecycle of AI-based products: training neural networks in PyTorch, building the full stack software around them (FastAPI, Node.js, React, Next.js) and making sure everything is tested and reliable (Playwright, Postman).
+I build deep learning models and bring them into real applications. Software Developer with over 5 years of experience, working across the whole lifecycle of AI-based products: training neural networks, building the full stack software around them and making sure everything is tested and reliable.
+
+**Stack:** Python · PyTorch · FastAPI · Node.js · React · JavaScript · SQL · Playwright · Postman · GitHub
 
 ## Highlights of the site
 
@@ -50,7 +52,7 @@ I build deep learning models and bring them into real applications. Five years o
 ## Contact
 
 - Email: salvo.borlenghi@gmail.com
-- LinkedIn: [salvatore-borlenghi](https://www.linkedin.com/in/salvatore-borlenghi)
+- LinkedIn: [salvatoreborlenghi](https://www.linkedin.com/in/salvatoreborlenghi)
 
 ## Credits
 

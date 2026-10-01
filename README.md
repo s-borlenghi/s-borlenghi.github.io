@@ -51,7 +51,7 @@ I build deep learning models and bring them into real applications. Software Dev
 
 ## Contact
 
-- Email: salvo.borlenghi@outlook.com
+- Email: salvo.borlenghi@gmail.com
 - LinkedIn: [Salvatore Borlenghi](https://www.linkedin.com/in/salvatore-borlenghi)
 
 ## Credits

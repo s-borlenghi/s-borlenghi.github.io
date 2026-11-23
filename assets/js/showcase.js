@@ -5,16 +5,26 @@
  *        è calcolata dalla rete che si sta addestrando nel browser
  *  Dati – esempio di analisi con Pandas e un pulsante che analizza davvero le previsioni
  *         della rete: matrice di confusione, accuratezza ed errori
+ *  Requisiti – una user story modificabile con la verifica dal vivo della Definition of Ready
  * Usa la variabile globale `lang` definita in i18n.js.
  */
 (function () {
   const T = {
     it: { range: "Il valore deve essere compreso tra -1 e 1", number: "Il valore deve essere un numero",
           running: "Analisi in corso…", label: "classe", pred: "previsione", acc: "Accuratezza", errors: "Errori",
-          of: "su", points: "punti", epoch: "epoca", done: "Analisi completata" },
+          of: "su", points: "punti", epoch: "epoca", done: "Analisi completata",
+          as: "Come", want: "voglio", so: "così che", ready: "Pronta per lo sviluppo", review: "Da rivedere",
+          item: "punto", items: "punti", found: "trovato", q: ["«", "»"], ok: "superato", ko: "da rivedere",
+          vague: ["veloce", "velocemente", "rapido", "rapida", "rapidamente", "semplice", "semplicemente", "facile", "facilmente",
+                  "intuitivo", "intuitiva", "migliore", "migliorare", "ottimizzare", "ottimale", "moderno", "moderna",
+                  "efficiente", "flessibile", "user-friendly", "bello", "bella"] },
     en: { range: "Input should be between -1 and 1", number: "Input should be a valid number",
           running: "Running analysis…", label: "label", pred: "predicted", acc: "Accuracy", errors: "Errors",
-          of: "of", points: "points", epoch: "epoch", done: "Analysis complete" }
+          of: "of", points: "points", epoch: "epoch", done: "Analysis complete",
+          as: "As a", want: "I want to", so: "so that", ready: "Ready for development", review: "Needs work",
+          item: "item", items: "items", found: "found", q: ["“", "”"], ok: "passed", ko: "needs work",
+          vague: ["fast", "quick", "quickly", "simple", "simply", "easy", "easily", "intuitive", "better", "improve",
+                  "optimize", "optimal", "modern", "efficient", "flexible", "user-friendly", "seamless", "nice"] }
   }[lang === "en" ? "en" : "it"];
 
   /* ---------- Schede accessibili (frecce, Home, Fine) ---------- */
@@ -88,7 +98,7 @@
   const summary = document.getElementById("data-summary");
   const dout = document.getElementById("data-out");
   async function analyze() {
-    if (!window.nnApi || !dout) return;
+    if (!window.nnApi || !window.nnApi.data || !dout) return;
     runBtn.disabled = true;
     summary.textContent = T.running;
     window.nnApi.ensureTraining();
@@ -116,4 +126,49 @@
     runBtn.disabled = false;
   }
   if (runBtn) runBtn.addEventListener("click", analyze);
+
+  /* ---------- Requisiti: user story e Definition of Ready ---------- */
+  const role = document.getElementById("us-role"), goal = document.getElementById("us-goal"), benefit = document.getElementById("us-benefit");
+  const storyEl = document.getElementById("us-text"), dorSummary = document.getElementById("dor-summary");
+  const prioBtns = [...document.querySelectorAll("[data-moscow]")];
+  const words = v => v.trim().split(/\s+/).filter(Boolean).length;
+  const vagueRe = new RegExp("(^|[^\\p{L}-])(" + T.vague.join("|") + ")(?=$|[^\\p{L}-])", "giu");
+  function findVague(text) {
+    const hits = new Set(); let m;
+    vagueRe.lastIndex = 0;
+    while ((m = vagueRe.exec(text))) hits.add(m[2].toLowerCase());
+    return [...hits];
+  }
+  function strong(txt) { const b = document.createElement("strong"); b.textContent = txt.trim() || "…"; return b; }
+  function checkStory() {
+    if (!storyEl) return;
+    // anteprima della user story
+    storyEl.replaceChildren(T.as + " ", strong(role.value), ", " + T.want + " ", strong(goal.value), ", " + T.so + " ", strong(benefit.value), ".");
+    const vague = findVague([role.value, goal.value, benefit.value].join(" "));
+    const res = {
+      role: role.value.trim().length >= 3,
+      goal: words(goal.value) >= 4,
+      benefit: words(benefit.value) >= 3,
+      vague: vague.length === 0,
+      prio: prioBtns.some(b => b.getAttribute("aria-pressed") === "true")
+    };
+    let ko = 0;
+    document.querySelectorAll("#dor-list li").forEach(li => {
+      const pass = res[li.dataset.check], name = li.querySelector(".dor-name");
+      li.className = pass ? "pass" : "fail";
+      li.querySelector(".dor-ico").textContent = pass ? "✓" : "✕";
+      li.querySelector(".dor-state").textContent = " (" + (pass ? T.ok : T.ko) + ")";
+      name.textContent = name.dataset.base + (li.dataset.check === "vague" && !pass ? ` (${T.found}: ${vague.map(w => T.q[0] + w + T.q[1]).join(", ")})` : "");
+      if (!pass) ko++;
+    });
+    dorSummary.className = "dor-summary " + (ko ? "ko" : "ok");
+    dorSummary.textContent = ko ? `${T.review}: ${ko} ${ko === 1 ? T.item : T.items}` : "✓ " + T.ready;
+  }
+  [role, goal, benefit].forEach(el => el && el.addEventListener("input", checkStory));
+  prioBtns.forEach(b => b.addEventListener("click", () => {
+    const on = b.getAttribute("aria-pressed") !== "true";
+    prioBtns.forEach(x => x.setAttribute("aria-pressed", String(x === b && on)));
+    checkStory();
+  }));
+  checkStory();
 })();

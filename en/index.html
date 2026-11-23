@@ -90,7 +90,7 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/source-serif-4-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261123">
 </head>
 <body>
 
@@ -102,8 +102,8 @@
     <a class="brand" href="#top"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="8"/><path d="M9 22 L16 10 L23 22" /><circle cx="9" cy="22" r="2.6"/><circle cx="16" cy="10" r="2.6"/><circle cx="23" cy="22" r="2.6"/></svg><span class="brand-name">Salvatore Borlenghi</span></a>
     <nav class="menu" aria-label="Main menu">
       <a class="text-btn" href="#about">About</a>
-      <a class="text-btn" href="#skills">Skills</a>
       <a class="text-btn" href="#experience">Experience</a>
+      <a class="text-btn" href="#skills">Skills</a>
       <a class="text-btn" href="#technologies">Technologies</a>
       <a class="text-btn" href="#education">Education</a>
       <a class="text-btn" href="#contact">Contact</a>
@@ -140,6 +140,7 @@
           <button type="button" class="tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="true"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg>AI</button>
           <button type="button" class="tab" role="tab" id="tab-api" aria-controls="panel-api" aria-selected="false" tabindex="-1"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>API</button>
           <button type="button" class="tab" role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" tabindex="-1"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>Data</button>
+          <button type="button" class="tab" role="tab" id="tab-req" aria-controls="panel-req" aria-selected="false" tabindex="-1"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M222-200 80-342l56-56 85 84 170-170 56 57-225 227Zm0-320L80-662l56-56 85 84 170-170 56 57-225 227Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z"/></svg>Requirements</button>
         </div>
       <div class="panel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai"><figure class="panel-fig">
         <canvas id="nn-canvas" role="img" aria-label="A neural network learning to separate two classes of points" aria-describedby="nn-caption"></canvas>
@@ -206,6 +207,24 @@ df[<span class="s">&quot;predicted&quot;</span>] = (prob &gt; <span class="n">0.
         </div>
         <pre class="code resp" id="data-out" aria-live="polite"><span class="c"># Press Run analysis to see the results</span></pre>
       </div>
+      <div class="panel" role="tabpanel" id="panel-req" aria-labelledby="tab-req" hidden>
+        <p class="panel-intro">This is how I turn a request into a clear requirement. Edit the user story: the check tells you live whether it is ready for development.</p>
+        <div class="story-form">
+          <label>As a <input type="text" id="us-role" value="Customer Care manager" autocomplete="off" spellcheck="true"></label>
+          <label>I want to <input type="text" id="us-goal" value="see open tickets by category every week" autocomplete="off" spellcheck="true"></label>
+          <label>so that <input type="text" id="us-benefit" value="I can assign resources where they are needed" autocomplete="off" spellcheck="true"></label>
+          <div class="story-prio"><span class="lbl-prio" id="us-prio-lbl">Priority</span><div class="segmented small" role="group" aria-labelledby="us-prio-lbl"><button type="button" data-moscow="must" aria-pressed="false">Must</button><button type="button" data-moscow="should" aria-pressed="true">Should</button><button type="button" data-moscow="could" aria-pressed="false">Could</button><button type="button" data-moscow="wont" aria-pressed="false">Won’t</button></div></div>
+        </div>
+        <div class="story-card"><span class="tag">User story</span><div id="us-text"></div></div>
+        <div class="dor-head"><span>Definition of Ready</span><span class="dor-summary" id="dor-summary" role="status"></span></div>
+        <ul class="dor-list" id="dor-list">
+          <li data-check="role"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="the user role is stated">the user role is stated</span><span class="sr-only dor-state"></span></li>
+          <li data-check="goal"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="the goal is specific (at least 4 words)">the goal is specific (at least 4 words)</span><span class="sr-only dor-state"></span></li>
+          <li data-check="benefit"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="the business benefit is explicit">the business benefit is explicit</span><span class="sr-only dor-state"></span></li>
+          <li data-check="vague"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="no vague terms such as “fast” or “simple”">no vague terms such as “fast” or “simple”</span><span class="sr-only dor-state"></span></li>
+          <li data-check="prio"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="a priority is assigned (MoSCoW)">a priority is assigned (MoSCoW)</span><span class="sr-only dor-state"></span></li>
+        </ul>
+      </div>
       </div>
     </div>
   </section>
@@ -214,60 +233,11 @@ df[<span class="s">&quot;predicted&quot;</span>] = (prob &gt; <span class="n">0.
   <section class="section" id="about">
     <div class="sec-head"><p class="eyebrow">About me</p><h2>From business <span class="grad">to technology</span></h2></div>
     <div class="card about">
-      <p class="lead">IT Project Analyst with a Software Developer background, built within an international group. I analyze IT requirements and processes and act as the link between business needs and technical teams, also working directly with clients. My development experience allows me to assess the feasibility and technical impact of solutions from the outset.</p>
+      <p class="lead">IT Project Analyst with a Software Developer background, built within an international group. I analyze IT requirements and processes and act as the link between business needs and technical teams, also working directly with clients.</p>
       <div class="about-text">
-        <p>My strength lies in working with data: database extractions and checks, analyses to support decision-making, and prototypes to validate solutions with stakeholders before development. Through Python and Data Science I have extended this approach to Artificial Intelligence (AI), in automation projects based on Computer Vision and in operational data analysis through AI assistants.</p>
+        <p>My development experience allows me to assess the feasibility and technical impact of solutions from the outset. My strength lies in working with data: database extractions and checks, analyses to support decision-making, and prototypes to validate solutions with stakeholders before development. Through Python and Data Science I have extended this approach to Artificial Intelligence (AI), in automation projects based on Computer Vision and in operational data analysis through AI assistants.</p>
         <p>I integrate AI into my daily work as a tool to speed up analysis and development, while keeping full control over the results: I review them with a critical eye and work with locally hosted models, to protect data confidentiality and keep sensitive information within the company.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section class="section alt" id="skills">
-    <div class="sec-head"><p class="eyebrow">What I do</p><h2>Core <span class="grad">skills</span></h2><p class="sec-sub">Four areas of work, from process analysis to Artificial Intelligence, that I combine to turn needs into concrete solutions.</p></div>
-    <div class="skills">
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></span>
-        <h3>Requirements &amp; Process Analysis</h3>
-        <p>I analyze IT requirements and processes, act as the link between business and technical teams, and assess the feasibility and impact of solutions from the outset.</p>
-      </article>
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg></span>
-        <h3>Data &amp; Data Science</h3>
-        <p>Database extractions and checks, Python and SQL analyses to support decision-making, and prototypes to validate solutions with stakeholders.</p>
-      </article>
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg></span>
-        <h3>Artificial Intelligence</h3>
-        <p>Automation projects based on Computer Vision and AI assistants for data analysis, with locally hosted models to protect confidentiality.</p>
-      </article>
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg></span>
-        <h3>Integrations &amp; Development</h3>
-        <p>API connectors across e-commerce, CRM and ERP platforms, and a full stack development background, from frontend to backend.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Quotes Section -->
-  <section class="section" id="principles">
-    <div class="sec-head"><p class="eyebrow">Principles</p><h2>Ideas that <span class="grad">guide me</span></h2><p class="sec-sub">Three lines that sum up how I work: understand what to build, let the data speak, look ahead with AI.</p></div>
-    <div class="quotes">
-      <figure class="card quote">
-        <span class="chips c-green"><span class="chip">Analysis</span></span>
-        <blockquote lang="en"><p>The hardest single part of building a software system is deciding precisely what to build.</p></blockquote>
-        <figcaption><span class="who">Frederick P. Brooks Jr.</span><span class="src"><cite>No Silver Bullet</cite>, 1986</span></figcaption>
-      </figure>
-      <figure class="card quote">
-        <span class="chips c-amber"><span class="chip">Data</span></span>
-        <blockquote lang="en"><p>The greatest value of a picture is when it forces us to notice what we never expected to see.</p></blockquote>
-        <figcaption><span class="who">John W. Tukey</span><span class="src"><cite>Exploratory Data Analysis</cite>, 1977</span></figcaption>
-      </figure>
-      <figure class="card quote">
-        <span class="chips c-blue"><span class="chip">AI</span></span>
-        <blockquote lang="en"><p>We can only see a short distance ahead, but we can see plenty there that needs to be done.</p></blockquote>
-        <figcaption><span class="who">Alan Turing</span><span class="src"><cite>Computing Machinery and Intelligence</cite>, 1950</span></figcaption>
-      </figure>
     </div>
   </section>
 
@@ -327,8 +297,35 @@ df[<span class="s">&quot;predicted&quot;</span>] = (prob &gt; <span class="n">0.
     </ol>
   </section>
 
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="sec-head"><p class="eyebrow">What I do</p><h2>Core <span class="grad">skills</span></h2><p class="sec-sub">Four areas of work, from process analysis to Artificial Intelligence, that I combine to turn needs into concrete solutions.</p></div>
+    <div class="skills">
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></span>
+        <h3>Requirements &amp; Process Analysis</h3>
+        <p>I analyze IT requirements and processes, act as the link between business and technical teams, and assess the feasibility and impact of solutions from the outset.</p>
+      </article>
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg></span>
+        <h3>Data &amp; Data Science</h3>
+        <p>Database extractions and checks, Python and SQL analyses to support decision-making, and prototypes to validate solutions with stakeholders.</p>
+      </article>
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg></span>
+        <h3>Artificial Intelligence</h3>
+        <p>Automation projects based on Computer Vision and AI assistants for data analysis, with locally hosted models to protect confidentiality.</p>
+      </article>
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg></span>
+        <h3>Integrations &amp; Development</h3>
+        <p>API connectors across e-commerce, CRM and ERP platforms, and a full stack development background, from frontend to backend.</p>
+      </article>
+    </div>
+  </section>
+
   <!-- Technologies Section -->
-  <section class="section" id="technologies">
+  <section class="section alt" id="technologies">
     <div class="sec-head"><p class="eyebrow">Technologies</p><h2>The stack <span class="grad">I work with</span></h2></div>
     <div class="card stack">
       <div><h3>Data &amp; AI</h3><ul class="chips c-blue"><li class="chip">Python</li><li class="chip">SQL</li><li class="chip">Pandas</li><li class="chip">PyTorch</li></ul></div>
@@ -339,12 +336,34 @@ df[<span class="s">&quot;predicted&quot;</span>] = (prob &gt; <span class="n">0.
   </section>
 
   <!-- Education Section -->
-  <section class="section alt" id="education">
+  <section class="section" id="education">
     <div class="sec-head"><p class="eyebrow">Education</p><h2>Academic <span class="grad">background</span></h2></div>
     <ul class="card list edu">
-      <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>University of Florence</h3><p class="meta">Legal Services Sciences – Business Law track (March 2026 – July 2029)</p></div></li>
+      <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>University of Florence</h3><p class="meta">Legal Services Sciences – Business Law track (since March 2026, in progress)</p></div></li>
       <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>I.S.I.S. Buonarroti Fossombroni</h3><p class="meta">Diploma in Business Administration, Finance and Marketing (AFM, September 2020 – January 2022)</p></div></li>
     </ul>
+  </section>
+
+  <!-- Quotes Section -->
+  <section class="section alt" id="principles">
+    <div class="sec-head"><p class="eyebrow">Principles</p><h2>Ideas that <span class="grad">guide me</span></h2><p class="sec-sub">Three lines that sum up how I work: understand what to build, let the data speak, look ahead with AI.</p></div>
+    <div class="quotes">
+      <figure class="card quote">
+        <span class="chips c-green"><span class="chip">Analysis</span></span>
+        <blockquote lang="en"><p>The hardest single part of building a software system is deciding precisely what to build.</p></blockquote>
+        <figcaption><span class="who">Frederick P. Brooks Jr.</span><span class="src"><cite>No Silver Bullet</cite>, 1986</span></figcaption>
+      </figure>
+      <figure class="card quote">
+        <span class="chips c-amber"><span class="chip">Data</span></span>
+        <blockquote lang="en"><p>The greatest value of a picture is when it forces us to notice what we never expected to see.</p></blockquote>
+        <figcaption><span class="who">John W. Tukey</span><span class="src"><cite>Exploratory Data Analysis</cite>, 1977</span></figcaption>
+      </figure>
+      <figure class="card quote">
+        <span class="chips c-blue"><span class="chip">AI</span></span>
+        <blockquote lang="en"><p>We can only see a short distance ahead, but we can see plenty there that needs to be done.</p></blockquote>
+        <figcaption><span class="who">Alan Turing</span><span class="src"><cite>Computing Machinery and Intelligence</cite>, 1950</span></figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- Contact Section -->
@@ -369,9 +388,9 @@ df[<span class="s">&quot;predicted&quot;</span>] = (prob &gt; <span class="n">0.
   <a class="fab" id="to-top" href="#top" aria-label="Back to top" title="Back to top"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg></a>
 </footer>
 
-<script src="../assets/js/theme.js"></script>
-<script src="../assets/js/i18n.js"></script>
-<script src="../assets/js/nn-demo.js"></script>
-<script src="../assets/js/showcase.js"></script>
+<script src="../assets/js/theme.js?v=20261123"></script>
+<script src="../assets/js/i18n.js?v=20261123"></script>
+<script src="../assets/js/nn-demo.js?v=20261123"></script>
+<script src="../assets/js/showcase.js?v=20261123"></script>
 </body>
 </html>

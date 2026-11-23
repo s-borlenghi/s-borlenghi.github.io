@@ -171,7 +171,9 @@ h1 .grad { display: block; }
 .quote cite { font-style: italic; }
 
 /* Vetrina a schede: AI, API, QA */
-.tabs { display: flex; gap: .25rem; margin: -.25rem 0 1rem; border-bottom: 1px solid var(--border); }
+.tabs { display: flex; gap: .25rem; margin: -.25rem 0 1rem; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; }
 .tab { display: inline-flex; align-items: center; gap: .4rem; padding: .55rem .9rem; margin-bottom: -1px; border: 0; border-bottom: 2px solid transparent; border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: none; color: var(--text-2); font: 600 .875rem/1.4 var(--font); cursor: pointer; transition: color .15s var(--ease), background-color .15s var(--ease); }
 .tab .ms { width: 1.125rem; height: 1.125rem; }
 .tab[aria-selected="true"] { color: var(--primary-text); border-bottom-color: var(--primary); }
@@ -199,6 +201,25 @@ h1 .grad { display: block; }
 .resp .err { color: var(--red-tx); }
 .data-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: .75rem 0; }
 .data-bar .btn:disabled { opacity: .6; cursor: progress; }
+.story-form { display: grid; gap: .6rem; margin: 0 0 .75rem; }
+.story-form label { display: grid; grid-template-columns: 5.5rem 1fr; align-items: center; gap: .6rem; font: 600 .8125rem/1.4 var(--font); color: var(--text-2); }
+.story-form input { width: 100%; min-height: 2.5rem; padding: 0 .6rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--paper); color: var(--text); font: .875rem var(--font); box-sizing: border-box; }
+.story-form input:focus-visible { outline: 3px solid var(--primary-a50); outline-offset: 1px; }
+.story-prio { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; font: 600 .8125rem/1.4 var(--font); color: var(--text-2); }
+.story-prio .lbl-prio { width: 5.5rem; }
+.story-card { margin: 0 0 .75rem; padding: .875rem 1rem; border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius-sm); background: var(--paper-2); font-size: .9rem; line-height: 1.6; color: var(--text); }
+.story-card .tag { display: inline-block; margin-bottom: .35rem; font: 700 .75rem/1.4 var(--font); letter-spacing: .04em; text-transform: uppercase; color: var(--primary-text); }
+.dor-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin: 0 0 .4rem; font: 700 .8125rem/1.4 var(--font); color: var(--text); }
+.dor-summary.ok { color: var(--green-tx); }
+.dor-summary.ko { color: var(--red-tx); }
+.dor-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: .8125rem; line-height: 1.5; overflow: hidden; }
+.dor-list li { display: flex; align-items: baseline; gap: .6rem; padding: .45rem .75rem; color: var(--text-2); }
+.dor-list li + li { border-top: 1px solid var(--border); }
+.dor-ico { flex: none; width: 1rem; text-align: center; font-weight: 700; }
+.dor-list .pass .dor-ico { color: var(--green-tx); }
+.dor-list .fail .dor-ico { color: var(--red-tx); }
+.dor-list .fail { color: var(--text); }
+@media (max-width: 480px) { .story-form label { grid-template-columns: 1fr; gap: .25rem; } .story-prio .lbl-prio { width: 100%; } }
 .job-note { margin: .75rem 0 0; font-size: .875rem; font-style: italic; color: var(--text-2); }
 .data-summary { font-size: .875rem; color: var(--text-2); }
 
@@ -354,7 +375,8 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
   .text-btn { padding: .75rem .625rem; }
 }
 @media (forced-colors: active) {
-  .card, .chip, .pill, .theme-btn, .segmented, .fab, .code,   .tab[aria-selected="true"] { border-bottom-color: Highlight; }
+  .card, .chip, .pill, .theme-btn, .segmented, .fab, .code, .dor-list, .story-form input { border: 1px solid CanvasText; }
+  .tab[aria-selected="true"] { border-bottom-color: Highlight; }
   .grad { color: CanvasText; background: none; }
   .segmented > [aria-pressed="true"], .segmented > [aria-current="page"] { outline: 2px solid Highlight; outline-offset: -3px; }
 }

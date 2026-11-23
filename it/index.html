@@ -90,7 +90,7 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/source-serif-4-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261123">
 </head>
 <body>
 
@@ -102,8 +102,8 @@
     <a class="brand" href="#top"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="8"/><path d="M9 22 L16 10 L23 22" /><circle cx="9" cy="22" r="2.6"/><circle cx="16" cy="10" r="2.6"/><circle cx="23" cy="22" r="2.6"/></svg><span class="brand-name">Salvatore Borlenghi</span></a>
     <nav class="menu" aria-label="Menu principale">
       <a class="text-btn" href="#about">Chi sono</a>
-      <a class="text-btn" href="#skills">Competenze</a>
       <a class="text-btn" href="#experience">Esperienza</a>
+      <a class="text-btn" href="#skills">Competenze</a>
       <a class="text-btn" href="#technologies">Tecnologie</a>
       <a class="text-btn" href="#education">Formazione</a>
       <a class="text-btn" href="#contact">Contatti</a>
@@ -140,6 +140,7 @@
           <button type="button" class="tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="true"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg>AI</button>
           <button type="button" class="tab" role="tab" id="tab-api" aria-controls="panel-api" aria-selected="false" tabindex="-1"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>API</button>
           <button type="button" class="tab" role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" tabindex="-1"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>Dati</button>
+          <button type="button" class="tab" role="tab" id="tab-req" aria-controls="panel-req" aria-selected="false" tabindex="-1"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M222-200 80-342l56-56 85 84 170-170 56 57-225 227Zm0-320L80-662l56-56 85 84 170-170 56 57-225 227Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z"/></svg>Requisiti</button>
         </div>
       <div class="panel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai"><figure class="panel-fig">
         <canvas id="nn-canvas" role="img" aria-label="Rete neurale che impara a separare due classi di punti" aria-describedby="nn-caption"></canvas>
@@ -206,6 +207,24 @@ df[<span class="s">&quot;previsione&quot;</span>] = (prob &gt; <span class="n">0
         </div>
         <pre class="code resp" id="data-out" aria-live="polite"><span class="c"># Premi Esegui analisi per vedere i risultati</span></pre>
       </div>
+      <div class="panel" role="tabpanel" id="panel-req" aria-labelledby="tab-req" hidden>
+        <p class="panel-intro">Così trasformo una richiesta in un requisito chiaro. Modifica la user story: la verifica controlla dal vivo se è pronta per lo sviluppo.</p>
+        <div class="story-form">
+          <label>Come <input type="text" id="us-role" value="responsabile del Customer Care" autocomplete="off" spellcheck="true"></label>
+          <label>voglio <input type="text" id="us-goal" value="vedere ogni settimana i ticket aperti per categoria" autocomplete="off" spellcheck="true"></label>
+          <label>così che <input type="text" id="us-benefit" value="possa assegnare le risorse dove servono" autocomplete="off" spellcheck="true"></label>
+          <div class="story-prio"><span class="lbl-prio" id="us-prio-lbl">Priorità</span><div class="segmented small" role="group" aria-labelledby="us-prio-lbl"><button type="button" data-moscow="must" aria-pressed="false">Must</button><button type="button" data-moscow="should" aria-pressed="true">Should</button><button type="button" data-moscow="could" aria-pressed="false">Could</button><button type="button" data-moscow="wont" aria-pressed="false">Won’t</button></div></div>
+        </div>
+        <div class="story-card"><span class="tag">User story</span><div id="us-text"></div></div>
+        <div class="dor-head"><span>Definition of Ready</span><span class="dor-summary" id="dor-summary" role="status"></span></div>
+        <ul class="dor-list" id="dor-list">
+          <li data-check="role"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="il ruolo dell'utente è indicato">il ruolo dell'utente è indicato</span><span class="sr-only dor-state"></span></li>
+          <li data-check="goal"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="l'obiettivo è specifico (almeno 4 parole)">l'obiettivo è specifico (almeno 4 parole)</span><span class="sr-only dor-state"></span></li>
+          <li data-check="benefit"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="il beneficio per il business è esplicito">il beneficio per il business è esplicito</span><span class="sr-only dor-state"></span></li>
+          <li data-check="vague"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="nessun termine vago, come «veloce» o «semplice»">nessun termine vago, come «veloce» o «semplice»</span><span class="sr-only dor-state"></span></li>
+          <li data-check="prio"><span class="dor-ico" aria-hidden="true">·</span><span class="dor-name" data-base="la priorità è assegnata (MoSCoW)">la priorità è assegnata (MoSCoW)</span><span class="sr-only dor-state"></span></li>
+        </ul>
+      </div>
       </div>
     </div>
   </section>
@@ -214,63 +233,11 @@ df[<span class="s">&quot;previsione&quot;</span>] = (prob &gt; <span class="n">0
   <section class="section" id="about">
     <div class="sec-head"><p class="eyebrow">Chi sono</p><h2>Dal business <span class="grad">alla tecnologia</span></h2></div>
     <div class="card about">
-      <p class="lead">IT Project Analyst con un background da Software Developer, maturato in un gruppo internazionale. Analizzo requisiti e processi IT e faccio da tramite tra le esigenze del business e i team tecnici, anche nel confronto diretto con i clienti. L'esperienza nello sviluppo mi permette di valutare fin dall'inizio la fattibilità e l'impatto tecnico delle soluzioni.</p>
+      <p class="lead">IT Project Analyst con un background da Software Developer, maturato in un gruppo internazionale. Analizzo requisiti e processi IT e faccio da tramite tra le esigenze del business e i team tecnici, anche nel confronto diretto con i clienti.</p>
       <div class="about-text">
-        <p>Il mio punto di forza è il rapporto con i dati: estrazioni e verifiche su database, analisi a supporto delle decisioni e prototipi per validare le soluzioni con gli stakeholder prima dello sviluppo. Con Python e la Data Science ho esteso questo approccio all'Intelligenza Artificiale (AI), in progetti di automazione basati su Computer Vision e di analisi dei dati operativi tramite assistenti AI.</p>
+        <p>L'esperienza nello sviluppo mi permette di valutare fin dall'inizio la fattibilità e l'impatto tecnico delle soluzioni. Il mio punto di forza è il rapporto con i dati: estrazioni e verifiche su database, analisi a supporto delle decisioni e prototipi per validare le soluzioni con gli stakeholder prima dello sviluppo. Con Python e la Data Science ho esteso questo approccio all'Intelligenza Artificiale (AI), in progetti di automazione basati su Computer Vision e di analisi dei dati operativi tramite assistenti AI.</p>
         <p>Integro l'AI nel lavoro quotidiano come strumento per accelerare analisi e sviluppo, mantenendo sempre il controllo sui risultati: li verifico con occhio critico e utilizzo modelli eseguiti in locale, per tutelare la riservatezza dei dati ed evitare che informazioni sensibili escano dall'azienda.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section class="section alt" id="skills">
-    <div class="sec-head"><p class="eyebrow">Cosa faccio</p><h2>Competenze <span class="grad">principali</span></h2><p class="sec-sub">Quattro aree di lavoro, dall'analisi dei processi all'Intelligenza Artificiale, che uso insieme per tradurre le esigenze in soluzioni concrete.</p></div>
-    <div class="skills">
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></span>
-        <h3>Analisi dei requisiti e dei processi</h3>
-        <p>Analizzo requisiti e processi IT, faccio da collegamento tra business e team tecnici e valuto fin dall'inizio fattibilità e impatto delle soluzioni.</p>
-      </article>
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg></span>
-        <h3>Dati &amp; Data Science</h3>
-        <p>Estrazioni e verifiche su database, analisi con Python e SQL a supporto delle decisioni e prototipi per validare le soluzioni con gli stakeholder.</p>
-      </article>
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg></span>
-        <h3>Intelligenza Artificiale</h3>
-        <p>Progetti di automazione basati su Computer Vision e assistenti AI per l'analisi dei dati, con modelli eseguiti in locale per tutelare la riservatezza.</p>
-      </article>
-      <article class="card skill">
-        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg></span>
-        <h3>Integrazioni &amp; Sviluppo</h3>
-        <p>Connettori API tra piattaforme e-commerce, CRM ed ERP e un background da sviluppatore full stack, dal frontend al backend.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Quotes Section -->
-  <section class="section" id="principles">
-    <div class="sec-head"><p class="eyebrow">Principi</p><h2>Le idee che <span class="grad">mi guidano</span></h2><p class="sec-sub">Tre frasi che riassumono come lavoro: capire cosa costruire, lasciar parlare i dati, guardare avanti con l'AI.</p></div>
-    <div class="quotes">
-      <figure class="card quote">
-        <span class="chips c-green"><span class="chip">Analisi</span></span>
-        <blockquote lang="en"><p>The hardest single part of building a software system is deciding precisely what to build.</p></blockquote>
-          <p class="quote-tr" lang="it"><span class="sr-only">Traduzione: </span>La parte più difficile nel costruire un sistema software è decidere con precisione cosa costruire.</p>
-        <figcaption><span class="who">Frederick P. Brooks Jr.</span><span class="src"><cite>No Silver Bullet</cite>, 1986</span></figcaption>
-      </figure>
-      <figure class="card quote">
-        <span class="chips c-amber"><span class="chip">Dati</span></span>
-        <blockquote lang="en"><p>The greatest value of a picture is when it forces us to notice what we never expected to see.</p></blockquote>
-          <p class="quote-tr" lang="it"><span class="sr-only">Traduzione: </span>Il valore più grande di un grafico è quando ci costringe a notare ciò che non ci saremmo mai aspettati di vedere.</p>
-        <figcaption><span class="who">John W. Tukey</span><span class="src"><cite>Exploratory Data Analysis</cite>, 1977</span></figcaption>
-      </figure>
-      <figure class="card quote">
-        <span class="chips c-blue"><span class="chip">AI</span></span>
-        <blockquote lang="en"><p>We can only see a short distance ahead, but we can see plenty there that needs to be done.</p></blockquote>
-          <p class="quote-tr" lang="it"><span class="sr-only">Traduzione: </span>Possiamo vedere solo poco più avanti, ma lì vediamo molto di ciò che resta da fare.</p>
-        <figcaption><span class="who">Alan Turing</span><span class="src"><cite>Computing Machinery and Intelligence</cite>, 1950</span></figcaption>
-      </figure>
     </div>
   </section>
 
@@ -330,8 +297,35 @@ df[<span class="s">&quot;previsione&quot;</span>] = (prob &gt; <span class="n">0
     </ol>
   </section>
 
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="sec-head"><p class="eyebrow">Cosa faccio</p><h2>Competenze <span class="grad">principali</span></h2><p class="sec-sub">Quattro aree di lavoro, dall'analisi dei processi all'Intelligenza Artificiale, che uso insieme per tradurre le esigenze in soluzioni concrete.</p></div>
+    <div class="skills">
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></span>
+        <h3>Analisi dei requisiti e dei processi</h3>
+        <p>Analizzo requisiti e processi IT, faccio da collegamento tra business e team tecnici e valuto fin dall'inizio fattibilità e impatto delle soluzioni.</p>
+      </article>
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg></span>
+        <h3>Dati &amp; Data Science</h3>
+        <p>Estrazioni e verifiche su database, analisi con Python e SQL a supporto delle decisioni e prototipi per validare le soluzioni con gli stakeholder.</p>
+      </article>
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M449-374h60l3-44q12-2 22.5-8.5T553-441l42 14 28-48-30-24q5-14 5-29t-5-29l30-24-28-48-42 14q-8-8-19-14t-22-9l-3-44h-60l-3 44q-11 3-22 9t-19 14l-42-14-28 48 30 24q-5 14-5 29t5 29l-30 24 28 48 42-14q8 8 18.5 14.5T446-418l3 44Zm-19.5-104.5Q409-499 409-528t20.5-49.5Q450-598 479-598t49.5 20.5Q549-557 549-528t-20.5 49.5Q508-458 479-458t-49.5-20.5ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l55 218q4 14-5 25.5T853-360h-93v140q0 25-17.5 42.5T700-160H600v80H240Z"/></svg></span>
+        <h3>Intelligenza Artificiale</h3>
+        <p>Progetti di automazione basati su Computer Vision e assistenti AI per l'analisi dei dati, con modelli eseguiti in locale per tutelare la riservatezza.</p>
+      </article>
+      <article class="card skill">
+        <span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg></span>
+        <h3>Integrazioni &amp; Sviluppo</h3>
+        <p>Connettori API tra piattaforme e-commerce, CRM ed ERP e un background da sviluppatore full stack, dal frontend al backend.</p>
+      </article>
+    </div>
+  </section>
+
   <!-- Technologies Section -->
-  <section class="section" id="technologies">
+  <section class="section alt" id="technologies">
     <div class="sec-head"><p class="eyebrow">Tecnologie</p><h2>Lo stack <span class="grad">che utilizzo</span></h2></div>
     <div class="card stack">
       <div><h3>Dati &amp; AI</h3><ul class="chips c-blue"><li class="chip">Python</li><li class="chip">SQL</li><li class="chip">Pandas</li><li class="chip">PyTorch</li></ul></div>
@@ -342,19 +336,44 @@ df[<span class="s">&quot;previsione&quot;</span>] = (prob &gt; <span class="n">0
   </section>
 
   <!-- Education Section -->
-  <section class="section alt" id="education">
+  <section class="section" id="education">
     <div class="sec-head"><p class="eyebrow">Formazione</p><h2>Studi e <span class="grad">percorso accademico</span></h2></div>
     <ul class="card list edu">
-      <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>Università degli Studi di Firenze</h3><p class="meta">Scienze dei Servizi Giuridici, Giurista d'Impresa (Marzo 2026 – Luglio 2029)</p></div></li>
-      <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>I.S.I.S Buonarroti Fossombroni</h3><p class="meta">Diploma in Amministrazione, Finanza e Marketing (AFM, Settembre 2020 – Gennaio 2022)</p></div></li>
+      <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>Università degli Studi di Firenze</h3><p class="meta">Scienze dei Servizi Giuridici, Giurista d'Impresa (da marzo 2026, in corso)</p></div></li>
+      <li><span class="icon-badge"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M860-283v-282L479-360 40-600l439-240 441 240v317h-60ZM479-120 189-279v-210l290 159 290-159v210L479-120Z"/></svg></span><div><h3>I.S.I.S. Buonarroti Fossombroni</h3><p class="meta">Diploma in Amministrazione, Finanza e Marketing (AFM, Settembre 2020 – Gennaio 2022)</p></div></li>
     </ul>
+  </section>
+
+  <!-- Quotes Section -->
+  <section class="section alt" id="principles">
+    <div class="sec-head"><p class="eyebrow">Principi</p><h2>Le idee che <span class="grad">mi guidano</span></h2><p class="sec-sub">Tre frasi che riassumono come lavoro: capire cosa costruire, lasciar parlare i dati, guardare avanti con l'AI.</p></div>
+    <div class="quotes">
+      <figure class="card quote">
+        <span class="chips c-green"><span class="chip">Analisi</span></span>
+        <blockquote lang="en"><p>The hardest single part of building a software system is deciding precisely what to build.</p></blockquote>
+          <p class="quote-tr" lang="it"><span class="sr-only">Traduzione: </span>La parte più difficile nel costruire un sistema software è decidere con precisione cosa costruire.</p>
+        <figcaption><span class="who">Frederick P. Brooks Jr.</span><span class="src"><cite>No Silver Bullet</cite>, 1986</span></figcaption>
+      </figure>
+      <figure class="card quote">
+        <span class="chips c-amber"><span class="chip">Dati</span></span>
+        <blockquote lang="en"><p>The greatest value of a picture is when it forces us to notice what we never expected to see.</p></blockquote>
+          <p class="quote-tr" lang="it"><span class="sr-only">Traduzione: </span>Il valore più grande di un grafico è quando ci costringe a notare ciò che non ci saremmo mai aspettati di vedere.</p>
+        <figcaption><span class="who">John W. Tukey</span><span class="src"><cite>Exploratory Data Analysis</cite>, 1977</span></figcaption>
+      </figure>
+      <figure class="card quote">
+        <span class="chips c-blue"><span class="chip">AI</span></span>
+        <blockquote lang="en"><p>We can only see a short distance ahead, but we can see plenty there that needs to be done.</p></blockquote>
+          <p class="quote-tr" lang="it"><span class="sr-only">Traduzione: </span>Possiamo vedere solo poco più avanti, ma lì vediamo molto di ciò che resta da fare.</p>
+        <figcaption><span class="who">Alan Turing</span><span class="src"><cite>Computing Machinery and Intelligence</cite>, 1950</span></figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- Contact Section -->
   <section class="section" id="contact">
     <div class="card contact">
       <p class="eyebrow">Contatti</p>
-      <h2>Se vuoi contattarmi.</h2>
+      <h2>Restiamo in contatto.</h2>
       <p>Per domande o per un confronto su analisi IT, dati o Intelligenza Artificiale, scrivimi: rispondo volentieri.</p>
       <a class="mail" href="mailto:salvo.borlenghi@gmail.com">salvo.borlenghi@gmail.com</a>
       <div class="actions">
@@ -372,9 +391,9 @@ df[<span class="s">&quot;previsione&quot;</span>] = (prob &gt; <span class="n">0
   <a class="fab" id="to-top" href="#top" aria-label="Torna in alto" title="Torna in alto"><svg class="ms" viewBox="0 -960 960 960" aria-hidden="true" focusable="false"><path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg></a>
 </footer>
 
-<script src="../assets/js/theme.js"></script>
-<script src="../assets/js/i18n.js"></script>
-<script src="../assets/js/nn-demo.js"></script>
-<script src="../assets/js/showcase.js"></script>
+<script src="../assets/js/theme.js?v=20261123"></script>
+<script src="../assets/js/i18n.js?v=20261123"></script>
+<script src="../assets/js/nn-demo.js?v=20261123"></script>
+<script src="../assets/js/showcase.js?v=20261123"></script>
 </body>
 </html>

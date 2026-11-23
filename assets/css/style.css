@@ -197,20 +197,10 @@ h1 .grad { display: block; }
 .resp .st { font-weight: 700; }
 .resp .ok { color: var(--green-tx); }
 .resp .err { color: var(--red-tx); }
-.qa-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: .75rem 0; }
-.qa-bar .btn:disabled { opacity: .6; cursor: progress; }
-.qa-summary { font-size: .875rem; color: var(--text-2); }
-.qa-summary .p { color: var(--green-tx); font-weight: 700; }
-.qa-summary .f { color: var(--red-tx); font-weight: 700; }
-.qa-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-sm); font: .78rem/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; overflow: hidden; }
-.qa-list li { display: flex; align-items: baseline; gap: .6rem; padding: .45rem .75rem; }
-.qa-list li + li { border-top: 1px solid var(--border); }
-.qa-ico { flex: none; width: 1rem; text-align: center; font-weight: 700; color: var(--text-2); }
-.qa-list .running .qa-ico { color: var(--primary-text); }
-.qa-list .pass .qa-ico { color: var(--green-tx); }
-.qa-list .fail .qa-ico { color: var(--red-tx); }
-.qa-list .fail .qa-name { color: var(--red-tx); }
-.qa-time { margin-left: auto; white-space: nowrap; color: var(--text-2); }
+.data-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: .75rem 0; }
+.data-bar .btn:disabled { opacity: .6; cursor: progress; }
+.job-note { margin: .75rem 0 0; font-size: .875rem; font-style: italic; color: var(--text-2); }
+.data-summary { font-size: .875rem; color: var(--text-2); }
 
 /* Sezioni */
 .section { position: relative; padding-top: 5rem; margin-top: 5rem; }
@@ -364,8 +354,7 @@ h3 { font-size: 1.125rem; line-height: 1.4; font-weight: 700; letter-spacing: -.
   .text-btn { padding: .75rem .625rem; }
 }
 @media (forced-colors: active) {
-  .card, .chip, .pill, .theme-btn, .segmented, .fab, .code, .qa-list { border: 1px solid CanvasText; }
-  .tab[aria-selected="true"] { border-bottom-color: Highlight; }
+  .card, .chip, .pill, .theme-btn, .segmented, .fab, .code,   .tab[aria-selected="true"] { border-bottom-color: Highlight; }
   .grad { color: CanvasText; background: none; }
   .segmented > [aria-pressed="true"], .segmented > [aria-current="page"] { outline: 2px solid Highlight; outline-offset: -3px; }
 }

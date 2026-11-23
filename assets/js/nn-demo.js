@@ -154,9 +154,10 @@
   function announce(acc) { if (status) status.textContent = UI[lang].done + " " + Math.round(acc * 100) + "%"; }
   window.nnRefreshLabel = label;
   window.nnRedraw = () => draw();
-  // Usati dalla vetrina: la scheda API chiede previsioni al modello, i test ne leggono lo stato
+  // Usati dalla vetrina: la scheda API chiede previsioni al modello, la scheda Dati ne analizza i risultati
   window.nnApi = {
     predict: (x, y) => forward(x, y, false),
+    data: () => data.map(d => d.slice()),
     stats: () => ({ epoch, loss: hist.length ? hist[hist.length - 1] : null, acc: lastAcc, dataset: kind, running, done }),
     ensureTraining: () => { if (!running && !done) start(); },
     resize: () => { size(); draw(); }

@@ -1,20 +1,20 @@
 # Salvatore Borlenghi · Personal website
 
-Personal website and portfolio of **Salvatore Borlenghi**, Senior Software Developer: AI / Deep Learning, Full Stack and Technical QA.
+Personal website and portfolio of **Salvatore Borlenghi**, IT Project Analyst with a Software Developer background: requirements and process analysis, Python, Data Science and AI.
 
 **Live:** https://s-borlenghi.github.io/ (redirects to your language) · [Italiano](https://s-borlenghi.github.io/it/) · [English](https://s-borlenghi.github.io/en/)
 
 ## About me
 
-I build deep learning models and bring them into real applications. Software Developer with over 5 years of experience, working across the whole lifecycle of AI-based products: training neural networks, building the full stack software around them and making sure everything is tested and reliable.
+IT Project Analyst with a Software Developer background, built within an international group. I analyze IT requirements and processes and act as the link between business needs and technical teams. My strength lies in working with data, which I have extended to Artificial Intelligence through Computer Vision automation and AI assistants for data analysis.
 
-**Stack:** Python · PyTorch · FastAPI · Node.js · React · JavaScript · SQL · Playwright · Postman · GitHub
+**Stack:** Python · SQL · Pandas · PyTorch · FastAPI · Node.js · React · Docker · Git
 
 ## Highlights of the site
 
 - **Live neural network demo.** A small MLP (2 → 16 → 16 → 1) trains in real time in the browser and draws its decision boundary on three datasets: circles, XOR and spiral. Forward pass, backpropagation and the Adam optimizer are implemented in plain JavaScript, with no ML libraries.
-- **Skills showcase.** Three tabs in the hero: the live neural network (AI), a FastAPI example with a simulated `POST /predict` answered by the in-browser model (API), and a Playwright example with a button that runs real checks on the page (QA).
-- **Principles.** Three verified quotes from computing pioneers (Turing 1950, Dijkstra 1970, Fowler 1999), one per area of work.
+- **Skills showcase.** Three tabs in the hero: the live neural network (AI), a FastAPI example with a simulated `POST /predict` answered by the in-browser model (API), and a Pandas example with a button that analyzes the model's real predictions: confusion matrix, accuracy and errors (Data).
+- **Principles.** Three quotes from computing and statistics pioneers (Brooks 1986, Tukey 1977, Turing 1950), one per area of work: analysis, data and AI.
 - **Italian / English.** The root page sends each visitor to `/it/` or `/en/` based on their saved choice or browser language. Both versions are static pages linked with `hreflang`, so search engines index both.
 - **No framework, no build step.** Plain HTML, CSS and JavaScript, served as-is by GitHub Pages.
 - **Design.** Layout inspired by mui.com (white background, alternating tinted sections), rounded geometry and serif headings inspired by the Claude app, and an own palette: deep navy with a soft green accent. Light theme by default, dark theme on request. Self-hosted IBM Plex Sans and Source Serif 4, Material icons as inline SVG.
@@ -43,7 +43,7 @@ I build deep learning models and bring them into real applications. Software Dev
 │   ├── js/theme.js       # Dark / light theme switch
 │   ├── js/i18n.js        # Language switch and saved preference
 │   ├── js/nn-demo.js     # Neural network demo
-│   ├── js/showcase.js    # AI / API / QA tabs
+│   ├── js/showcase.js    # AI / API / Data tabs
 │   ├── fonts/            # IBM Plex Sans, Source Serif 4 (SIL Open Font License)
 │   └── img/              # Profile photo and favicon
 └── .nojekyll             # Serve files as-is, skipping Jekyll

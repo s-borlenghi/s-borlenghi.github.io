@@ -3,15 +3,18 @@
  *  AI  – la rete neurale che si addestra (nn-demo.js)
  *  API – esempio FastAPI e una richiesta POST /predict simulata, la cui risposta
  *        è calcolata dalla rete che si sta addestrando nel browser
- *  QA  – esempio Playwright e un pulsante che esegue controlli reali su questa pagina
+ *  Dati – esempio di analisi con Pandas e un pulsante che analizza davvero le previsioni
+ *         della rete: matrice di confusione, accuratezza ed errori
  * Usa la variabile globale `lang` definita in i18n.js.
  */
 (function () {
   const T = {
-    it: { waiting: "in attesa", passed: "superati", failed: "falliti", running: "Esecuzione dei test…",
-          range: "Il valore deve essere compreso tra -1 e 1", number: "Il valore deve essere un numero" },
-    en: { waiting: "waiting", passed: "passed", failed: "failed", running: "Running tests…",
-          range: "Input should be between -1 and 1", number: "Input should be a valid number" }
+    it: { range: "Il valore deve essere compreso tra -1 e 1", number: "Il valore deve essere un numero",
+          running: "Analisi in corso…", label: "classe", pred: "previsione", acc: "Accuratezza", errors: "Errori",
+          of: "su", points: "punti", epoch: "epoca", done: "Analisi completata" },
+    en: { range: "Input should be between -1 and 1", number: "Input should be a valid number",
+          running: "Running analysis…", label: "label", pred: "predicted", acc: "Accuracy", errors: "Errors",
+          of: "of", points: "points", epoch: "epoch", done: "Analysis complete" }
   }[lang === "en" ? "en" : "it"];
 
   /* ---------- Schede accessibili (frecce, Home, Fine) ---------- */
@@ -79,55 +82,38 @@
     send();
   });
 
-  /* ---------- QA: controlli reali su questa pagina ---------- */
-  const otherLang = lang === "en" ? "it" : "en";
+  /* ---------- Dati: analisi delle previsioni del modello ---------- */
   const sleep = ms => new Promise(r => setTimeout(r, ms));
-  const CHECKS = {
-    h1: () => document.querySelectorAll("h1").length === 1,
-    alt: () => [...document.images].every(img => (img.getAttribute("alt") || "").trim().length > 0),
-    mail: () => !!document.querySelector('.hero a.btn.contained[href^="mailto:"]'),
-    profiles: () => !!document.querySelector('a[href*="linkedin.com/in/"]') && !!document.querySelector('a[href*="github.com/"]'),
-    hreflang: () => !!document.querySelector(`link[rel="alternate"][hreflang="${otherLang}"]`),
-    ld: () => [...document.querySelectorAll('script[type="application/ld+json"]')].every(s => { JSON.parse(s.textContent); return true; }),
-    names: () => [...document.querySelectorAll("button")].every(b => (b.textContent.trim() || b.getAttribute("aria-label") || "").length > 0),
-    // come l'auto-attesa di Playwright: riprova fino a 20 secondi
-    model: async () => {
-      if (!window.nnApi) return false;
-      window.nnApi.ensureTraining();
-      const end = performance.now() + 20000;
-      while (performance.now() < end) {
-        const a = window.nnApi.stats().acc;
-        if (a !== null && a >= 0.9) return true;
-        if (window.nnApi.stats().done) return (window.nnApi.stats().acc || 0) >= 0.9;
-        await sleep(200);
-      }
-      return false;
-    }
-  };
-  const runBtn = document.getElementById("qa-run");
-  const summary = document.getElementById("qa-summary");
-  const items = [...document.querySelectorAll("#qa-list li")];
-  async function runAll() {
+  const runBtn = document.getElementById("data-run");
+  const summary = document.getElementById("data-summary");
+  const dout = document.getElementById("data-out");
+  async function analyze() {
+    if (!window.nnApi || !dout) return;
     runBtn.disabled = true;
     summary.textContent = T.running;
-    items.forEach(li => { li.className = ""; li.querySelector(".qa-ico").textContent = "·"; li.querySelector(".qa-time").textContent = ""; });
-    let ok = 0, ko = 0, total = 0;
-    for (const li of items) {
-      li.className = "running"; li.querySelector(".qa-ico").textContent = "◌";
-      const t = performance.now();
-      let pass = false;
-      try { pass = await CHECKS[li.dataset.test](); } catch (e) { pass = false; }
-      const ms = performance.now() - t; // tempo reale del controllo
-      total += ms;
-      await sleep(120); // pausa solo per rendere leggibile la sequenza, esclusa dal tempo
-      li.className = pass ? "pass" : "fail";
-      li.querySelector(".qa-ico").textContent = pass ? "✓" : "✕";
-      li.querySelector(".qa-time").textContent = `(${ms < 1 ? "<1" : Math.round(ms)} ms)`;
-      pass ? ok++ : ko++;
-    }
-    const secs = total < 1000 ? `${Math.max(1, Math.round(total))} ms` : `${(total / 1000).toFixed(1)} s`;
-    summary.innerHTML = `<span class="p">${ok} ${T.passed}</span>` + (ko ? ` · <span class="f">${ko} ${T.failed}</span>` : "") + ` (${secs})`;
+    window.nnApi.ensureTraining();
+    // se il modello non ha ancora iniziato ad addestrarsi, attende le prime epoche
+    const end = performance.now() + 1500;
+    while (window.nnApi.stats().epoch < 20 && performance.now() < end) await sleep(100);
+    const pts = window.nnApi.data(), st = window.nnApi.stats();
+    const cm = [[0, 0], [0, 0]];
+    for (const [x, y, lab] of pts) cm[lab][window.nnApi.predict(x, y) > 0.5 ? 1 : 0]++;
+    const n = pts.length, ok = cm[0][0] + cm[1][1], err = n - ok;
+    // stampa nello stile di pandas.crosstab
+    const w = Math.max(T.pred.length, T.label.length) + 2, c = 6;
+    const row = (a, b, d) => a.padEnd(w) + String(b).padStart(c) + String(d).padStart(c);
+    const lines = [
+      row(T.pred, 0, 1),
+      T.label,
+      row("0", cm[0][0], cm[0][1]),
+      row("1", cm[1][0], cm[1][1]),
+      "",
+      `${T.acc}: ${(ok / n * 100).toFixed(1)}%`,
+      `${T.errors}: ${err} ${T.of} ${n} ${T.points}`
+    ];
+    dout.textContent = lines.join("\n");
+    summary.textContent = `${T.done} · ${st.dataset} · ${T.epoch} ${st.epoch}`;
     runBtn.disabled = false;
   }
-  if (runBtn) runBtn.addEventListener("click", runAll);
+  if (runBtn) runBtn.addEventListener("click", analyze);
 })();
